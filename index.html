@@ -214,40 +214,47 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Items -->
-      <div class="hidden lg:flex items-center space-x-9 text-xs uppercase tracking-[0.2em] font-medium text-stone-300">
-        <a href="#about" class="nav-link hover:text-gold transition duration-200">The Broker</a>
-        <a href="#listings" class="nav-link hover:text-gold transition duration-200">Portfolio</a>
-        <a href="#calculator" class="nav-link hover:text-gold transition duration-200">Mortgage Tool</a>
-        <a href="#services" class="nav-link hover:text-gold transition duration-200">Advisory</a>
-        <a href="#words" class="nav-link hover:text-gold transition duration-200">Testimonials</a>
-      </div>
-
-      <!-- Action Button & Mobile Toggle -->
-      <div class="flex items-center gap-4">
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs uppercase tracking-widest font-semibold text-black bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] bg-[length:200%_auto] hover:bg-right transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-105 active:scale-95">
-          <span>Private Consultation</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-        </a>
-
-        <button id="mobileNavToggle" aria-label="Toggle navigation" class="p-2 lg:hidden text-stone-300 hover:text-white rounded-lg bg-surface border border-white/5">
-          <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div id="mobileDrawer" class="hidden lg:hidden bg-obsidian/95 border-b border-white/10 px-6 py-8 space-y-5 backdrop-blur-2xl transition-all">
-      <a href="#about" class="mobile-link block text-sm uppercase tracking-widest text-stone-300 hover:text-gold">The Broker</a>
-      <a href="#listings" class="mobile-link block text-sm uppercase tracking-widest text-stone-300 hover:text-gold">Portfolio</a>
-      <a href="#calculator" class="mobile-link block text-sm uppercase tracking-widest text-stone-300 hover:text-gold">Mortgage Tool</a>
-      <a href="#services" class="mobile-link block text-sm uppercase tracking-widest text-stone-300 hover:text-gold">Advisory</a>
-      <a href="#words" class="mobile-link block text-sm uppercase tracking-widest text-stone-300 hover:text-gold">Testimonials</a>
-      <a href="#contact" class="mobile-link block text-center py-3.5 rounded-full bg-gold text-black font-semibold text-xs uppercase tracking-widest">
-        Schedule Private Consultation
-      </a>
+      <!-- Sleek Hamburger Menu Toggle -->
+      <button id="menuToggleBtn" aria-label="Toggle navigation" class="p-2.5 text-stone-300 hover:text-white rounded-xl bg-surface border border-white/10 hover:border-gold/50 transition duration-300 group">
+        <i data-lucide="menu" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+      </button>
     </div>
   </nav>
+
+  <!-- ================= ELEGANT SIDE DRAWER MENU ================= -->
+  <div id="sideDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[400px] bg-[#08090B]/95 backdrop-blur-3xl border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-2xl flex flex-col">
+    <div class="flex justify-end p-6 h-20 md:h-24 items-center">
+      <button id="menuCloseBtn" aria-label="Close navigation" class="p-3 text-stone-400 hover:text-gold rounded-full bg-white/5 hover:bg-white/10 transition duration-300 group">
+        <i data-lucide="x" class="w-6 h-6 group-hover:rotate-90 transition-transform duration-300"></i>
+      </button>
+    </div>
+    <div class="flex-1 flex flex-col justify-center px-12 pb-24 space-y-10">
+      <a href="#" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">Home</span>
+        <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
+      </a>
+      <a href="#listings" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">Listings</span>
+        <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
+      </a>
+      <a href="#contact" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">Let's Move</span>
+        <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
+      </a>
+      <a href="#about" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">About Us</span>
+        <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
+      </a>
+    </div>
+    <!-- Drawer Footer Info -->
+    <div class="px-12 pb-12 border-t border-white/5 pt-8">
+      <p class="text-[10px] uppercase tracking-[0.25em] text-gold font-medium mb-3">Direct Connect</p>
+      <a href="tel:2069196886" class="text-sm text-stone-400 hover:text-white transition block mb-2 flex items-center gap-2"><i data-lucide="phone-call" class="w-4 h-4"></i> (206) 919-6886</a>
+      <a href="mailto:MARCIMETZGER@GMAIL.COM" class="text-sm text-stone-400 hover:text-white transition block flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> MARCIMETZGER@GMAIL.COM</a>
+    </div>
+  </div>
+  <!-- Drawer Overlay Backdrop -->
+  <div id="drawerBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-500"></div>
 
   <!-- ================= HERO SECTION ================= -->
   <section class="relative min-h-[92vh] flex items-center justify-center pt-8 pb-20 overflow-hidden grain-bg">
@@ -1077,11 +1084,10 @@
       <div>
         <h4 class="text-white uppercase tracking-widest font-semibold text-xs mb-4">Navigation</h4>
         <ul class="space-y-2.5 text-stone-400">
-          <li><a href="#about" class="hover:text-gold transition">The Principal Broker</a></li>
-          <li><a href="#listings" class="hover:text-gold transition">Featured Portfolio</a></li>
-          <li><a href="#calculator" class="hover:text-gold transition">Mortgage & Loan Tool</a></li>
-          <li><a href="#services" class="hover:text-gold transition">Real Estate Done Right</a></li>
-          <li><a href="#contact" class="hover:text-gold transition">VIP Consultation</a></li>
+          <li><a href="#" class="hover:text-gold transition">Home</a></li>
+          <li><a href="#listings" class="hover:text-gold transition">Listings</a></li>
+          <li><a href="#contact" class="hover:text-gold transition">Let's Move</a></li>
+          <li><a href="#about" class="hover:text-gold transition">About Us</a></li>
         </ul>
       </div>
 
@@ -1129,14 +1135,30 @@
       cursorGlow.style.top = `${e.clientY}px`;
     });
 
-    // 3. Mobile Navigation Drawer
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    mobileNavToggle.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('hidden');
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileDrawer.classList.add('hidden'));
+    // 3. Elegant Side Drawer Navigation
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const menuCloseBtn = document.getElementById('menuCloseBtn');
+    const sideDrawer = document.getElementById('sideDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    
+    function openMenu() {
+      sideDrawer.classList.remove('translate-x-full');
+      drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    function closeMenu() {
+      sideDrawer.classList.add('translate-x-full');
+      drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    menuToggleBtn.addEventListener('click', openMenu);
+    menuCloseBtn.addEventListener('click', closeMenu);
+    drawerBackdrop.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.drawer-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
 
     // 4. Ambient Particle Canvas Animation
