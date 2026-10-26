@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marci Metzger | The Ridge Realty Group | Pahrump Real Estate</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#C5A880',
+              goldHover: '#B39366',
+              dark: '#111315',
+              surface: '#1A1D20',
+              muted: '#71767B',
+              light: '#F8F9FA'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .backdrop-blur-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(17,19,21,0.75) 0%, rgba(17,19,21,0.85) 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#0B0C0E] text-stone-200 font-sans antialiased selection:bg-brand-gold selection:text-black">
+
+  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+  <header class="border-b border-white/10 bg-[#0F1113] py-2 px-6 text-xs text-stone-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-gold"></i> (206) 919-6886</span>
+        <span class="hidden md:inline text-white/20">|</span>
+        <span class="hidden md:flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-gold"></i> 3190 HW-160, Suite F, Pahrump, NV 89048</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Open Daily 8:00 AM – 7:00 PM</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="sticky top-0 z-50 bg-[#0B0C0E]/90 backdrop-blur-nav border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex flex-col group">
+        <span class="font-serif text-2xl md:text-3xl tracking-widest text-white group-hover:text-brand-gold transition">MARCI METZGER</span>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-medium">The Ridge Realty Group</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
+        <a href="#about" class="text-stone-300 hover:text-brand-gold transition">About Marci</a>
+        <a href="#services" class="text-stone-300 hover:text-brand-gold transition">Services</a>
+        <a href="#listings" class="text-stone-300 hover:text-brand-gold transition">Featured Listings</a>
+        <a href="#testimonials" class="text-stone-300 hover:text-brand-gold transition">In Her Words</a>
+        <a href="#contact" class="px-5 py-2.5 rounded-full border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black transition duration-300 font-semibold text-xs tracking-widest uppercase">
+          Schedule Consultation
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="lg:hidden text-white focus:outline-none">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-brand-surface border-b border-white/10 px-6 py-6 space-y-4">
+      <a href="#about" class="block text-stone-200 hover:text-brand-gold text-base py-1">About Marci</a>
+      <a href="#services" class="block text-stone-200 hover:text-brand-gold text-base py-1">Services</a>
+      <a href="#listings" class="block text-stone-200 hover:text-brand-gold text-base py-1">Featured Listings</a>
+      <a href="#testimonials" class="block text-stone-200 hover:text-brand-gold text-base py-1">In Her Words</a>
+      <a href="#contact" class="block w-full text-center px-4 py-3 rounded-md bg-brand-gold text-black font-semibold uppercase text-xs tracking-wider">
+        Schedule Consultation
+      </a>
+    </div>
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative min-h-[90vh] flex items-center justify-center bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop');">
+    <div class="absolute inset-0 hero-gradient"></div>
+
+    <div class="relative max-w-5xl mx-auto px-6 py-24 text-center z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs text-brand-gold tracking-widest uppercase mb-6">
+        <span>Trusted Southern Nevada Real Estate Specialist</span>
+      </div>
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-white mb-6 leading-tight">
+        Elevating Pahrump Real Estate With Nearly 3 Decades of Mastery
+      </h1>
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-stone-300 font-light mb-10 leading-relaxed">
+        Whether you are buying your desert oasis, relocating, or aiming for top dollar on your sale, partner with Southern Nevada's proven expert.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#listings" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-gold text-black font-semibold tracking-wider text-xs uppercase hover:bg-brand-goldHover transition duration-300 shadow-xl shadow-brand-gold/10">
+          View Current Listings
+        </a>
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold tracking-wider text-xs uppercase backdrop-blur-md transition duration-300">
+          Request Market Analysis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUICK PROPERTY SEARCH ================= -->
+  <div class="relative -mt-10 max-w-5xl mx-auto px-6 z-20">
+    <div class="bg-brand-surface border border-white/10 rounded-2xl shadow-2xl p-6 backdrop-blur-xl">
+      <form id="searchFilterForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-1.5">Location</label>
+          <select class="w-full bg-[#111315] border border-white/10 rounded-lg px-3 py-2.5 text-sm text-stone-200 focus:outline-none focus:border-brand-gold">
+            <option>Pahrump, NV</option>
+            <option>Mountain Falls Community</option>
+            <option>Las Vegas Metro</option>
+            <option>Amargosa Valley</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-1.5">Property Type</label>
+          <select class="w-full bg-[#111315] border border-white/10 rounded-lg px-3 py-2.5 text-sm text-stone-200 focus:outline-none focus:border-brand-gold">
+            <option>Residential Single Family</option>
+            <option>Luxury Estate / Golf Course</option>
+            <option>Vacant Land & Acreage</option>
+            <option>Commercial Property</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-1.5">Price Range</label>
+          <select class="w-full bg-[#111315] border border-white/10 rounded-lg px-3 py-2.5 text-sm text-stone-200 focus:outline-none focus:border-brand-gold">
+            <option>Any Price Range</option>
+            <option>$300k - $600k</option>
+            <option>$600k - $1M</option>
+            <option>$1,000,000+</option>
+          </select>
+        </div>
+        <div class="flex items-end">
+          <button type="button" onclick="alert('Filtering active listings...')" class="w-full bg-brand-gold hover:bg-brand-goldHover text-black font-semibold text-xs uppercase tracking-wider py-3 rounded-lg transition duration-200 flex items-center justify-center gap-2">
+            <i data-lucide="search" class="w-4 h-4"></i> Search Now
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= METRICS & STATS ================= -->
+  <section class="max-w-7xl mx-auto px-6 py-20 border-b border-white/5">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="p-4">
+        <div class="font-serif text-4xl sm:text-5xl text-brand-gold font-normal">Nearly 30</div>
+        <div class="text-xs uppercase tracking-widest text-stone-400 mt-2">Years Licensed Mastery</div>
+      </div>
+      <div class="p-4">
+        <div class="font-serif text-4xl sm:text-5xl text-brand-gold font-normal">$28.5M+</div>
+        <div class="text-xs uppercase tracking-widest text-stone-400 mt-2">Recent Annual Volume</div>
+      </div>
+      <div class="p-4">
+        <div class="font-serif text-4xl sm:text-5xl text-brand-gold font-normal">90+</div>
+        <div class="text-xs uppercase tracking-widest text-stone-400 mt-2">Annual Satisfied Clients</div>
+      </div>
+      <div class="p-4">
+        <div class="font-serif text-4xl sm:text-5xl text-brand-gold font-normal">Top 1%</div>
+        <div class="text-xs uppercase tracking-widest text-stone-400 mt-2">Pahrump Valley Agent</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT MARCI SECTION ================= -->
+  <section id="about" class="py-24 bg-[#0F1113]">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Image Column with Luxury Frame -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+          <img 
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=900&auto=format&fit=crop" 
+            alt="Marci Metzger" 
+            class="w-full h-[520px] object-cover filter contrast-105"
+          />
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/60 to-transparent p-6">
+            <h3 class="font-serif text-2xl text-white">Marci J. Metzger</h3>
+            <p class="text-brand-gold text-xs uppercase tracking-widest">Broker & REALTOR® | License #B.1002787</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Bio Column -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="text-xs font-semibold uppercase tracking-widest text-brand-gold">Experience You Can Trust</div>
+        <h2 class="font-serif text-3xl sm:text-4xl text-white leading-tight">
+          A Wealth of Real Estate Knowledge In Washington & Southern Nevada
+        </h2>
+        <p class="text-stone-300 leading-relaxed font-light">
+          Marci was a REALTOR®, then a licensed Broker in Washington State before establishing roots under the Nevada sunshine. Having guided buyers and sellers across multiple shifting market cycles since 1995, she brings unmatched negotiation skills, market instinct, and meticulous contract oversight to every transaction.
+        </p>
+
+        <!-- Quote Card (In Her Words) -->
+        <blockquote class="p-6 rounded-xl bg-brand-surface border-l-4 border-brand-gold italic text-stone-300 leading-relaxed font-serif text-lg">
+          "I love that small-town feeling that our community offers. Spectacular golf courses, parks, pools, and easy access to Las Vegas make Pahrump a great place to call home. Working or retired, fast-paced or looking to relax... there's a place for you here!"
+        </blockquote>
+
+        <div class="pt-2 flex flex-wrap gap-4">
+          <a href="tel:2069196886" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-gold text-black font-semibold text-xs uppercase tracking-wider hover:bg-brand-goldHover transition">
+            <i data-lucide="phone-call" class="w-4 h-4"></i> Call (206) 919-6886
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 hover:border-brand-gold text-stone-200 hover:text-white font-medium text-xs uppercase tracking-wider transition">
+            Send an Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES SECTION ================= -->
+  <section id="services" class="py-24 max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs uppercase tracking-widest text-brand-gold font-semibold">Our Specialized Services</span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-white mt-2">Real Estate Done Right</h2>
+      <p class="text-stone-400 mt-3 text-sm">Tailored representation for residential, luxury estates, and commercial land investments.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="p-8 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-gold/40 transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-black transition">
+          <i data-lucide="home" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-white mb-3">Residential & Luxury</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          Large or small, condo or mountain estate, we find the home that fits your lifestyle at the price that makes financial sense.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="p-8 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-gold/40 transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-black transition">
+          <i data-lucide="trending-up" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-white mb-3">Don't Just List It... Get It Sold!</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          We exhaust every avenue—targeted digital campaigns, pristine staging guidance, and widespread buyer networks to secure top dollar.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="p-8 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-gold/40 transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-black transition">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-white mb-3">Rely on Proven Expertise</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          Questions about market valuation, lender financing, or closing mechanics? We ensure you feel informed and confident at every step.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED PROPERTIES SECTION ================= -->
+  <section id="listings" class="py-24 bg-[#0F1113]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-brand-gold font-semibold">Curated Properties</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-white mt-2">What's New at The Ridge</h2>
+        </div>
+        <span class="text-stone-400 text-sm">Virtual & Private Showings Available</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Listing 1 -->
+        <div class="bg-brand-surface rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/30 transition group flex flex-col">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="4751 W Adkisson Street" />
+            <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded text-xs text-white uppercase tracking-wider font-semibold">Featured</div>
+            <div class="absolute bottom-4 left-4 text-2xl font-serif text-white font-semibold drop-shadow-md">$1,850,000</div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-medium text-lg text-white mb-1">4751 W Adkisson Street</h3>
+              <p class="text-xs text-stone-400 mb-4">Pahrump, NV 89048</p>
+              <div class="flex items-center gap-4 text-xs text-stone-300 py-3 border-y border-white/10">
+                <span class="flex items-center gap-1"><i data-lucide="bed" class="w-4 h-4 text-brand-gold"></i> 4 Beds</span>
+                <span class="flex items-center gap-1"><i data-lucide="bath" class="w-4 h-4 text-brand-gold"></i> 5 Baths</span>
+                <span class="flex items-center gap-1"><i data-lucide="maximize" class="w-4 h-4 text-brand-gold"></i> 5,530 Sq Ft</span>
+              </div>
+            </div>
+            <button onclick="alert('Viewing Virtual Tour for 4751 W Adkisson Street')" class="mt-6 w-full py-2.5 rounded-lg border border-white/20 hover:border-brand-gold hover:text-brand-gold text-xs uppercase tracking-wider transition text-center">
+              Request Virtual Showing
+            </button>
+          </div>
+        </div>
+
+        <!-- Listing 2 -->
+        <div class="bg-brand-surface rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/30 transition group flex flex-col">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="2221 W Windsong Lane" />
+            <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded text-xs text-white uppercase tracking-wider font-semibold">New Listing</div>
+            <div class="absolute bottom-4 left-4 text-2xl font-serif text-white font-semibold drop-shadow-md">$1,300,000</div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-medium text-lg text-white mb-1">2221 W Windsong Lane</h3>
+              <p class="text-xs text-stone-400 mb-4">Pahrump, NV 89048</p>
+              <div class="flex items-center gap-4 text-xs text-stone-300 py-3 border-y border-white/10">
+                <span class="flex items-center gap-1"><i data-lucide="bed" class="w-4 h-4 text-brand-gold"></i> 3 Beds</span>
+                <span class="flex items-center gap-1"><i data-lucide="bath" class="w-4 h-4 text-brand-gold"></i> 3 Baths</span>
+                <span class="flex items-center gap-1"><i data-lucide="maximize" class="w-4 h-4 text-brand-gold"></i> 1,876 Sq Ft</span>
+              </div>
+            </div>
+            <button onclick="alert('Viewing Virtual Tour for 2221 W Windsong Lane')" class="mt-6 w-full py-2.5 rounded-lg border border-white/20 hover:border-brand-gold hover:text-brand-gold text-xs uppercase tracking-wider transition text-center">
+              Request Virtual Showing
+            </button>
+          </div>
+        </div>
+
+        <!-- Listing 3 -->
+        <div class="bg-brand-surface rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/30 transition group flex flex-col">
+          <div class="relative overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="4190 N Equus Court" />
+            <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded text-xs text-white uppercase tracking-wider font-semibold">Virtual Showing</div>
+            <div class="absolute bottom-4 left-4 text-2xl font-serif text-white font-semibold drop-shadow-md">$1,275,000</div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-medium text-lg text-white mb-1">4190 N Equus Court</h3>
+              <p class="text-xs text-stone-400 mb-4">Pahrump, NV 89048</p>
+              <div class="flex items-center gap-4 text-xs text-stone-300 py-3 border-y border-white/10">
+                <span class="flex items-center gap-1"><i data-lucide="bed" class="w-4 h-4 text-brand-gold"></i> 3 Beds</span>
+                <span class="flex items-center gap-1"><i data-lucide="bath" class="w-4 h-4 text-brand-gold"></i> 3 Baths</span>
+                <span class="flex items-center gap-1"><i data-lucide="maximize" class="w-4 h-4 text-brand-gold"></i> 2,456 Sq Ft</span>
+              </div>
+            </div>
+            <button onclick="alert('Viewing Virtual Tour for 4190 N Equus Court')" class="mt-6 w-full py-2.5 rounded-lg border border-white/20 hover:border-brand-gold hover:text-brand-gold text-xs uppercase tracking-wider transition text-center">
+              Request Virtual Showing
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT & CONSULTATION ================= -->
+  <section id="contact" class="py-24 max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Contact Info -->
+      <div class="lg:col-span-5 space-y-8">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-brand-gold font-semibold">Let's Connect</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-white mt-2">Start Your Real Estate Journey</h2>
+          <p class="text-stone-400 text-sm mt-3 leading-relaxed">
+            Have questions about Mountain Falls, buying land, or listing your residence? Marci and the team are here to help 7 days a week.
+          </p>
+        </div>
+
+        <div class="space-y-4 text-sm text-stone-300">
+          <div class="flex items-start gap-3">
+            <i data-lucide="map-pin" class="w-5 h-5 text-brand-gold shrink-0 mt-0.5"></i>
+            <div>
+              <p class="font-medium text-white">Office Location</p>
+              <p class="text-stone-400">3190 HW-160, Suite F, Pahrump, Nevada 89048</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="phone" class="w-5 h-5 text-brand-gold shrink-0 mt-0.5"></i>
+            <div>
+              <p class="font-medium text-white">Direct Phone</p>
+              <p class="text-stone-400">(206) 919-6886 / (425) 941-2560</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="mail" class="w-5 h-5 text-brand-gold shrink-0 mt-0.5"></i>
+            <div>
+              <p class="font-medium text-white">Direct Email</p>
+              <p class="text-stone-400">MARCIMETZGER@GMAIL.COM</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="clock" class="w-5 h-5 text-brand-gold shrink-0 mt-0.5"></i>
+            <div>
+              <p class="font-medium text-white">Hours of Operation</p>
+              <p class="text-stone-400">Monday – Sunday: 8:00 AM – 7:00 PM (Appointments Available Outside Regular Hours)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-7 bg-brand-surface border border-white/10 rounded-2xl p-8">
+        <h3 class="font-serif text-2xl text-white mb-2">Drop Us a Line</h3>
+        <p class="text-stone-400 text-xs mb-6">Leave a message and Marci will get back to you promptly.</p>
+        
+        <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to Marci Metzger.');" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-stone-400 mb-1">Your Name *</label>
+              <input type="text" required placeholder="Jane Doe" class="w-full bg-[#111315] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-stone-400 mb-1">Your Email *</label>
+              <input type="email" required placeholder="jane@example.com" class="w-full bg-[#111315] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-stone-400 mb-1">Your Phone</label>
+            <input type="tel" placeholder="(555) 000-0000" class="w-full bg-[#111315] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-stone-400 mb-1">How Can We Help?</label>
+            <textarea rows="4" placeholder="I'm interested in viewing a property or scheduling a home valuation..." class="w-full bg-[#111315] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldHover text-black font-semibold text-xs uppercase tracking-widest py-4 rounded-lg transition duration-200">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-white/10 bg-[#08090A] py-12 text-stone-500 text-xs">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div>
+        <span class="font-serif text-lg tracking-widest text-white">MARCI METZGER HOMES</span>
+        <p class="text-stone-400 mt-1">The Ridge Realty Group | Pahrump, Nevada</p>
+      </div>
+      <div>
+        <p>© 2026 Marci Metzger Homes. All Rights Reserved.</p>
+        <p class="mt-1">Designed for Luxury Presence Junior Website Builder Evaluation.</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#about" class="hover:text-stone-300">About</a>
+        <a href="#services" class="hover:text-stone-300">Services</a>
+        <a href="#listings" class="hover:text-stone-300">Listings</a>
+        <a href="#contact" class="hover:text-stone-300">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on anchor click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
