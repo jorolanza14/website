@@ -274,6 +274,7 @@
   <!-- ================= AFFILIATIONS / LOGOS BAND ================= -->
   <section class="py-8 border-b border-white/5 bg-obsidian relative z-20">
     <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-10 sm:gap-20">
+      <!-- Added CSS invert, grayscale, and opacity for that high-end silver frost look on dark themes -->
       <img src="logo1.webp" alt="The Ridge Realty Group" class="h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-105 transition duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=The+Ridge'; this.className='h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
       <img src="logo2.webp" alt="Equal Housing Opportunity" class="h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-105 transition duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=Equal+Housing'; this.className='h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
       <img src="logo3.webp" alt="REALTOR" class="h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-105 transition duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=REALTOR'; this.className='h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
@@ -297,7 +298,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1">
           <div class="aspect-video overflow-hidden">
-            <!-- Looks for 1.webp locally -->
+            <!-- Looks for 1.webp locally, falls back to a placeholder if not found yet -->
             <img src="1.webp" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop'" alt="Kitchen interior" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
           </div>
           <div class="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-3xl transition duration-500 pointer-events-none"></div>
@@ -320,7 +321,7 @@
         </div>
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1 lg:order-2">
           <div class="aspect-video overflow-hidden">
-            <!-- Looks for 2.webp locally -->
+            <!-- Looks for 2.webp locally, falls back to a placeholder if not found yet -->
             <img src="2.webp" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop'" alt="Luxury pool house" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
           </div>
           <div class="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-3xl transition duration-500 pointer-events-none"></div>
@@ -331,7 +332,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1">
           <div class="aspect-video overflow-hidden">
-            <!-- Looks for 3.webp locally -->
+            <!-- Looks for 3.webp locally, falls back to a placeholder if not found yet -->
             <img src="3.webp" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=900&auto=format&fit=crop'" alt="House keys" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
           </div>
           <div class="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-3xl transition duration-500 pointer-events-none"></div>
@@ -673,6 +674,92 @@
     </div>
   </section>
 
+  <!-- ================= LUXURY PHOTO GALLERY (BENTO GRID) ================= -->
+  <section id="gallery" class="py-24 bg-obsidian relative border-t border-white/5">
+    <!-- Background atmospheric glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
+          <i data-lucide="camera" class="w-4 h-4"></i> Visual Portfolio
+        </span>
+        <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 tracking-wide">Pahrump Valley Living</h2>
+        <p class="text-stone-400 text-sm mt-4 font-light">Experience the prestigious landscapes, custom estates, and championship golf courses of Southern Nevada.</p>
+      </div>
+      
+      <!-- Asymmetric Editorial Grid (7 Images) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] sm:auto-rows-[200px] md:auto-rows-[250px]">
+        
+        <!-- Image 1: Large Feature (Spans 2 columns, 2 rows) -->
+        <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-2xl" onclick="openLightbox('gallery1.webp', 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop')">
+          <img src="gallery1.webp" onerror="this.src='https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery feature" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white">
+              <i data-lucide="maximize-2" class="w-5 h-5"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 2: Standard Square -->
+        <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery2.webp', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop')">
+          <img src="gallery2.webp" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 2" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+          </div>
+        </div>
+
+        <!-- Image 3: Tall Portrait (Spans 1 column, 2 rows) -->
+        <div class="col-span-1 row-span-2 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-2xl" onclick="openLightbox('gallery3.webp', 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop')">
+          <img src="gallery3.webp" onerror="this.src='https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 3" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-5 h-5"></i></div>
+          </div>
+        </div>
+
+        <!-- Image 4: Standard Square -->
+        <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery4.webp', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop')">
+          <img src="gallery4.webp" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 4" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+          </div>
+        </div>
+
+        <!-- Image 5: Standard Square -->
+        <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery5.webp', 'https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=800&auto=format&fit=crop')">
+          <img src="gallery5.webp" onerror="this.src='https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 5" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+          </div>
+        </div>
+
+        <!-- Image 6: Standard Square -->
+        <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery6.webp', 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=800&auto=format&fit=crop')">
+          <img src="gallery6.webp" onerror="this.src='https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 6" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+          </div>
+        </div>
+
+        <!-- Image 7: Wide Landscape (Spans 2 columns, 1 row) -->
+        <div class="col-span-2 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-2xl" onclick="openLightbox('gallery7.webp', 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop')">
+          <img src="gallery7.webp" onerror="this.src='https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 7" />
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
+            <div class="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-5 h-5"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ================= ABOUT THE BROKER & IN HER WORDS ================= -->
   <section id="about" class="py-24 bg-surface/40 border-y border-white/5 relative grain-bg">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -961,6 +1048,17 @@
           Close Window
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- ================= FULLSCREEN LIGHTBOX OVERLAY ================= -->
+  <div id="lightboxModal" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-[#060708]/95 backdrop-blur-xl opacity-0 transition-opacity duration-300">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 p-3 text-stone-400 hover:text-gold hover:rotate-90 bg-white/5 hover:bg-white/10 rounded-full transition duration-300 z-50">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <div class="relative w-full max-w-6xl max-h-[90vh] p-4 flex justify-center items-center">
+      <!-- Image gets injected here via JS -->
+      <img id="lightboxImage" src="" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl scale-95 transition-transform duration-500" alt="Fullscreen Gallery View">
     </div>
   </div>
 
@@ -1272,6 +1370,44 @@
       setTimeout(() => {
         formToast.classList.add('hidden');
       }, 5000);
+    });
+
+    // 9. Fullscreen Image Lightbox
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+
+    function openLightbox(primarySrc, fallbackSrc) {
+      document.body.style.overflow = 'hidden'; // stop background scrolling
+      
+      // Try local webp first, if error (not found), use the unsplash fallback
+      lightboxImage.src = primarySrc;
+      lightboxImage.onerror = () => { lightboxImage.src = fallbackSrc; };
+      
+      lightboxModal.classList.remove('hidden');
+      // small delay to allow display:block to render before transitioning opacity
+      setTimeout(() => {
+        lightboxModal.classList.remove('opacity-0');
+        lightboxImage.classList.remove('scale-95');
+        lightboxImage.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeLightbox() {
+      document.body.style.overflow = '';
+      lightboxModal.classList.add('opacity-0');
+      lightboxImage.classList.remove('scale-100');
+      lightboxImage.classList.add('scale-95');
+      setTimeout(() => {
+        lightboxModal.classList.add('hidden');
+        lightboxImage.src = ""; // clear source
+      }, 300);
+    }
+
+    // Close lightbox on clicking outside the image
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal || e.target.parentElement === lightboxModal) {
+        closeLightbox();
+      }
     });
   </script>
 </body>
