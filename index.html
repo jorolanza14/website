@@ -136,6 +136,22 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Hero Slider Animations */
+    .slide-zoom {
+      animation: slideZoom 6s linear forwards;
+    }
+    @keyframes slideZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+    .progress-fill {
+      animation: fillProgress 6s linear forwards;
+    }
+    @keyframes fillProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
     /* Range Slider Styling */
     input[type=range] {
       -webkit-appearance: none;
@@ -174,48 +190,22 @@
   <div class="fixed top-0 left-1/4 w-[700px] h-[700px] bg-gold/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulseGlow"></div>
   <div class="fixed bottom-0 right-10 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
 
-  <!-- ================= TOP VIP STATUS BAR ================= -->
-  <header class="border-b border-white/5 bg-[#090A0D]/90 text-[11px] tracking-widest uppercase font-medium text-stone-400 py-2.5 px-6 relative z-50">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
-      <div class="flex items-center gap-4 flex-wrap justify-center">
-        <span class="flex items-center gap-1.5 text-stone-300">
-          <i data-lucide="award" class="w-3.5 h-3.5 text-gold"></i> Nevada License #B.1002787
-        </span>
-        <span class="hidden md:inline text-white/20">•</span>
-        <span class="flex items-center gap-1.5">
-          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> 3190 HW-160, Suite F, Pahrump, NV 89048
-        </span>
-      </div>
-      <div class="flex items-center gap-5">
-        <a href="tel:2069196886" class="hover:text-gold transition flex items-center gap-1">
-          <i data-lucide="phone-call" class="w-3 h-3 text-gold"></i> (206) 919-6886
-        </a>
-        <span class="text-white/20">•</span>
-        <span class="flex items-center gap-1.5 text-emerald-400">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-          Open Daily 8AM - 7PM
-        </span>
-      </div>
-    </div>
-  </header>
-
   <!-- ================= LUXURY NAVIGATION ================= -->
-  <nav id="navbar" class="sticky top-0 z-40 bg-obsidian/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+  <nav id="navbar" class="fixed top-0 w-full z-50 bg-transparent transition-colors duration-500 border-b border-transparent">
     <div class="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
       
-      <!-- Logo Branding -->
+      <!-- Minimalist Logo Branding -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-full border border-gold/40 flex items-center justify-center bg-gold/5 group-hover:border-gold transition duration-500 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
-          <span class="font-serif text-xl font-bold text-gold">M</span>
+        <div class="w-11 h-11 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:border-gold transition duration-500 shadow-lg">
+          <span class="font-serif text-xl font-bold text-white group-hover:text-gold transition">M</span>
         </div>
-        <div class="flex flex-col">
-          <span class="font-serif text-2xl tracking-[0.18em] font-light text-white group-hover:text-gold transition duration-300">MARCI METZGER</span>
-          <span class="text-[9px] uppercase tracking-[0.32em] text-gold/80 font-medium">The Ridge Realty Group</span>
+        <div class="flex flex-col drop-shadow-md hidden sm:flex">
+          <span class="font-serif text-2xl tracking-[0.18em] font-light text-white transition duration-300">MARCI METZGER</span>
         </div>
       </a>
 
-      <!-- Sleek Hamburger Menu Toggle -->
-      <button id="menuToggleBtn" aria-label="Toggle navigation" class="p-2.5 text-stone-300 hover:text-white rounded-xl bg-surface border border-white/10 hover:border-gold/50 transition duration-300 group">
+      <!-- Hamburger Menu Toggle -->
+      <button id="menuToggleBtn" aria-label="Toggle navigation" class="p-2.5 text-white hover:text-gold rounded-xl bg-black/20 backdrop-blur-md border border-white/20 hover:border-gold/50 transition duration-300 group shadow-lg">
         <i data-lucide="menu" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
       </button>
     </div>
@@ -230,147 +220,89 @@
     </div>
     <div class="flex-1 flex flex-col justify-center px-12 pb-24 space-y-10">
       <a href="#" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
-        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">Home</span>
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">HOME</span>
         <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
       </a>
       <a href="#listings" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
-        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">Listings</span>
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">LISTINGS</span>
         <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
       </a>
       <a href="#contact" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
-        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">Let's Move</span>
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">LET'S MOVE</span>
         <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
       </a>
       <a href="#about" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
-        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">About Us</span>
+        <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">ABOUT US</span>
         <i data-lucide="arrow-right" class="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold"></i>
       </a>
-    </div>
-    <!-- Drawer Footer Info -->
-    <div class="px-12 pb-12 border-t border-white/5 pt-8">
-      <p class="text-[10px] uppercase tracking-[0.25em] text-gold font-medium mb-3">Direct Connect</p>
-      <a href="tel:2069196886" class="text-sm text-stone-400 hover:text-white transition block mb-2 flex items-center gap-2"><i data-lucide="phone-call" class="w-4 h-4"></i> (206) 919-6886</a>
-      <a href="mailto:MARCIMETZGER@GMAIL.COM" class="text-sm text-stone-400 hover:text-white transition block flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> MARCIMETZGER@GMAIL.COM</a>
     </div>
   </div>
   <!-- Drawer Overlay Backdrop -->
   <div id="drawerBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-500"></div>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="relative min-h-[92vh] flex items-center justify-center pt-8 pb-20 overflow-hidden grain-bg">
-    <!-- Background Canvas Simulation -->
-    <canvas id="ambientCanvas" class="absolute inset-0 pointer-events-none z-0 opacity-40"></canvas>
+  <!-- ================= HERO SLIDER SECTION ================= -->
+  <section id="home" class="relative h-screen w-full overflow-hidden bg-obsidian">
+    
+    <!-- Slider Backgrounds Container -->
+    <div id="hero-slider" class="absolute inset-0 z-0">
+      <!-- JS Populated Slides -->
+    </div>
+    
+    <!-- Subtle Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-obsidian z-10 pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-center flex flex-col items-center">
-      
-      <!-- Top Badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border-gold/30 text-gold text-xs uppercase tracking-[0.25em] font-medium mb-8 animate-float shadow-[0_0_20px_rgba(212,175,55,0.15)]">
-        <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
-        <span>Nearly 3 Decades of Real Estate Authority</span>
-      </div>
-
-      <!-- Main Headline -->
-      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white font-normal leading-[1.08] tracking-tight max-w-5xl mb-6">
-        Distinguished Living Across <br />
-        <span class="italic font-light bg-gradient-to-r from-stone-100 via-gold-light to-gold bg-clip-text text-transparent">Pahrump & Mountain Falls</span>
+    <!-- Center Content: Headline & Unified Search Bar -->
+    <div class="relative z-20 flex flex-col items-center justify-center h-full px-4 sm:px-6 w-full max-w-5xl mx-auto -mt-10">
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-normal text-center mb-10 drop-shadow-2xl tracking-tight leading-tight">
+        Elevating Pahrump <br class="hidden sm:block"/> Real Estate
       </h1>
 
-      <!-- Description -->
-      <p class="text-stone-300 text-base sm:text-lg md:text-xl font-light max-w-2xl leading-relaxed mb-12">
-        Tailored residential, luxury golf course estates, and commercial land opportunities curated by Marci Metzger — The Ridge Realty Group.
-      </p>
-
-      <!-- Magnetic CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
-        <a href="#listings" class="w-full sm:w-auto px-9 py-4 rounded-full bg-gold text-black font-semibold text-xs uppercase tracking-[0.2em] hover:bg-gold-light transition duration-300 flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,175,55,0.35)]">
-          <span>Explore Featured Portfolio</span>
-          <i data-lucide="compass" class="w-4 h-4"></i>
-        </a>
-        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel text-stone-200 hover:text-white border-white/10 hover:border-gold/40 text-xs uppercase tracking-[0.2em] font-semibold transition duration-300 flex items-center justify-center gap-2">
-          <span>Calculate Affordability</span>
-          <i data-lucide="calculator" class="w-4 h-4 text-gold"></i>
-        </a>
-      </div>
-
-      <!-- Quick Trust Indicators -->
-      <div class="mt-16 pt-10 border-t border-white/5 w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div>
-          <div class="font-serif text-3xl sm:text-4xl text-white font-normal" data-count="30">30+</div>
-          <p class="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Years Mastery</p>
-        </div>
-        <div>
-          <div class="font-serif text-3xl sm:text-4xl text-gold font-normal" data-count="28.5">$28.5M+</div>
-          <p class="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Single-Year Closed Volume</p>
-        </div>
-        <div>
-          <div class="font-serif text-3xl sm:text-4xl text-white font-normal" data-count="90">90+</div>
-          <p class="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Families Served Annually</p>
-        </div>
-        <div>
-          <div class="font-serif text-3xl sm:text-4xl text-gold font-normal">Top 1%</div>
-          <p class="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Pahrump Valley Leader</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= LIVE SEARCH & DYNAMIC FILTER BAR ================= -->
-  <section class="max-w-7xl mx-auto px-6 -mt-8 relative z-30">
-    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl border-white/10">
-      
-      <!-- Category Tabs -->
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6 mb-6">
-        <div class="flex flex-wrap items-center gap-2" id="filterTabs">
-          <button data-category="all" class="filter-tab active px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition bg-gold text-black shadow-md">
-            All Listings
-          </button>
-          <button data-category="mountain-falls" class="filter-tab px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition bg-surface hover:text-white text-stone-400 border border-white/5">
-            Mountain Falls
-          </button>
-          <button data-category="luxury-estates" class="filter-tab px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition bg-surface hover:text-white text-stone-400 border border-white/5">
-            Luxury Estates
-          </button>
-          <button data-category="land-acreage" class="filter-tab px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition bg-surface hover:text-white text-stone-400 border border-white/5">
-            Land & Acreage
-          </button>
-        </div>
-
-        <div class="text-xs text-stone-400">
-          Showing <span id="propertyCount" class="text-gold font-bold">6</span> Available Properties
-        </div>
-      </div>
-
-      <!-- Controls Row -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-        <!-- Price Range Slider -->
-        <div class="space-y-2">
-          <div class="flex justify-between text-xs uppercase tracking-wider">
-            <span class="text-stone-400">Max Budget</span>
-            <span id="priceDisplay" class="text-gold font-semibold">$2,500,000</span>
-          </div>
-          <input type="range" id="priceRange" min="200000" max="2500000" step="50000" value="2500000" class="w-full">
-        </div>
-
-        <!-- Bedroom Selector -->
-        <div class="space-y-2">
-          <label class="block text-xs uppercase tracking-wider text-stone-400">Minimum Bedrooms</label>
-          <select id="bedFilter" class="w-full bg-[#111317] border border-white/10 rounded-xl px-4 py-2.5 text-xs uppercase tracking-wider text-stone-200 focus:outline-none focus:border-gold">
-            <option value="0">Any Bedrooms</option>
-            <option value="3">3+ Bedrooms</option>
-            <option value="4">4+ Bedrooms</option>
+      <!-- Glassmorphic Pill Search Bar -->
+      <div class="w-full max-w-4xl bg-white/10 backdrop-blur-2xl border border-white/20 p-2 sm:p-2.5 rounded-[2rem] sm:rounded-full flex flex-col sm:flex-row items-center gap-2 shadow-2xl">
+        <div class="flex-1 w-full sm:w-auto px-4 py-3 sm:py-2 border-b sm:border-b-0 sm:border-r border-white/20 relative group">
+          <select class="w-full bg-transparent text-white text-sm focus:outline-none appearance-none cursor-pointer font-medium">
+            <option value="sale" class="bg-surface text-white">For sale</option>
+            <option value="rent" class="bg-surface text-white">For rent</option>
+            <option value="sold" class="bg-surface text-white">Recently sold</option>
           </select>
+          <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white pointer-events-none"></i>
         </div>
-
-        <!-- Reset Button -->
-        <div class="flex items-end">
-          <button id="resetFilters" class="w-full py-2.5 rounded-xl border border-white/10 hover:border-gold text-stone-300 hover:text-gold text-xs uppercase tracking-widest font-medium transition flex items-center justify-center gap-2">
-            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Reset Search Parameters
-          </button>
+        <div class="flex-1 w-full sm:w-auto px-4 py-3 sm:py-2 border-b sm:border-b-0 sm:border-r border-white/20 relative group">
+          <select class="w-full bg-transparent text-white text-sm focus:outline-none appearance-none cursor-pointer font-medium">
+            <option value="any" class="bg-surface text-white">Any price</option>
+            <option value="1m" class="bg-surface text-white">$1,000,000+</option>
+            <option value="2m" class="bg-surface text-white">$2,000,000+</option>
+          </select>
+          <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white pointer-events-none"></i>
         </div>
+        <div class="flex-[2] w-full sm:w-auto px-4 py-3 sm:py-2 flex items-center">
+          <i data-lucide="map-pin" class="w-4 h-4 text-white/70 mr-2 hidden sm:block"></i>
+          <input type="text" placeholder="Location, neighborhood, or zip..." class="w-full bg-transparent text-white placeholder-stone-300 text-sm focus:outline-none font-medium">
+        </div>
+        <button onclick="alert('Filtering properties...')" class="w-full sm:w-auto px-8 py-3.5 bg-obsidian hover:bg-gold hover:text-black text-white rounded-full text-xs font-semibold tracking-widest uppercase transition duration-300 shadow-lg">
+          Search
+        </button>
       </div>
-
     </div>
+
+    <!-- Bottom Left Indicator Panel -->
+    <div class="absolute bottom-10 left-6 md:bottom-16 md:left-16 z-20 max-w-xl">
+      <h2 id="slider-title" class="font-serif text-2xl md:text-4xl text-white mb-2 drop-shadow-xl transition-opacity duration-500"></h2>
+      <p id="slider-desc" class="text-xs md:text-sm text-stone-200 drop-shadow-lg mb-6 transition-opacity duration-500 line-clamp-2 max-w-md"></p>
+      
+      <!-- Animated Dashes Container -->
+      <div id="slider-dashes" class="flex items-center gap-2 sm:gap-3">
+        <!-- JS Populates Dashes Here -->
+      </div>
+    </div>
+    
+    <!-- Desktop Slider Arrows -->
+    <button id="slider-prev" class="absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/20 hover:bg-black/50 text-white backdrop-blur-md transition hidden lg:block border border-white/10 hover:border-gold">
+      <i data-lucide="chevron-left" class="w-6 h-6"></i>
+    </button>
+    <button id="slider-next" class="absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/20 hover:bg-black/50 text-white backdrop-blur-md transition hidden lg:block border border-white/10 hover:border-gold">
+      <i data-lucide="chevron-right" class="w-6 h-6"></i>
+    </button>
   </section>
 
   <!-- ================= PROPERTY SHOWCASE GRID ================= -->
@@ -1084,10 +1016,10 @@
       <div>
         <h4 class="text-white uppercase tracking-widest font-semibold text-xs mb-4">Navigation</h4>
         <ul class="space-y-2.5 text-stone-400">
-          <li><a href="#" class="hover:text-gold transition">Home</a></li>
-          <li><a href="#listings" class="hover:text-gold transition">Listings</a></li>
-          <li><a href="#contact" class="hover:text-gold transition">Let's Move</a></li>
-          <li><a href="#about" class="hover:text-gold transition">About Us</a></li>
+          <li><a href="#" class="hover:text-gold transition">HOME</a></li>
+          <li><a href="#listings" class="hover:text-gold transition">LISTINGS</a></li>
+          <li><a href="#contact" class="hover:text-gold transition">LET'S MOVE</a></li>
+          <li><a href="#about" class="hover:text-gold transition">ABOUT US</a></li>
         </ul>
       </div>
 
@@ -1214,71 +1146,128 @@
     }
     animateParticles();
 
-    // 5. Interactive Property Dynamic Filtering
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const propertyCards = document.querySelectorAll('.property-card');
-    const priceRange = document.getElementById('priceRange');
-    const priceDisplay = document.getElementById('priceDisplay');
-    const bedFilter = document.getElementById('bedFilter');
-    const propertyCount = document.getElementById('propertyCount');
-    const resetFiltersBtn = document.getElementById('resetFilters');
+    // 5. Hero Slider Auto-Play & Indicator Logic
+    const slideData = [
+      {
+        image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000&auto=format&fit=crop',
+        title: 'Custom Desert Estate',
+        desc: 'Over an acre of private grounds featuring an entertainer courtyard, gourmet kitchen, and panoramic Spring Mountain views.'
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000&auto=format&fit=crop',
+        title: 'Villa in Mountain Falls',
+        desc: 'Modern luxury estate with stunning golf course frontage and seamless indoor-outdoor desert living.'
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop',
+        title: 'Equestrian Foothill Compound',
+        desc: 'Zoned for horses with a detached RV barn, high-efficiency solar, and sprawling outdoor kitchen amenities.'
+      }
+    ];
 
-    let currentCategory = 'all';
+    let currentSlideIdx = 0;
+    let slideTimer;
+    const SLIDE_DURATION = 6000;
 
-    function applyFilters() {
-      const maxPrice = parseInt(priceRange.value, 10);
-      const minBeds = parseInt(bedFilter.value, 10);
-      let visibleCount = 0;
+    const sliderContainer = document.getElementById('hero-slider');
+    const dashesContainer = document.getElementById('slider-dashes');
+    const titleEl = document.getElementById('slider-title');
+    const descEl = document.getElementById('slider-desc');
+    const navbar = document.getElementById('navbar');
 
-      propertyCards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        const cardPrice = parseInt(card.getAttribute('data-price'), 10);
-        const cardBeds = parseInt(card.getAttribute('data-beds'), 10);
+    // Nav Scroll Effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-obsidian/90', 'backdrop-blur-xl', 'border-white/5');
+        navbar.classList.remove('bg-transparent', 'border-transparent');
+      } else {
+        navbar.classList.remove('bg-obsidian/90', 'backdrop-blur-xl', 'border-white/5');
+        navbar.classList.add('bg-transparent', 'border-transparent');
+      }
+    });
 
-        const matchCat = (currentCategory === 'all' || cardCat === currentCategory);
-        const matchPrice = cardPrice <= maxPrice;
-        const matchBeds = (minBeds === 0 || cardBeds >= minBeds);
+    // Initialize Slides & Indicators
+    slideData.forEach((slide, idx) => {
+      const slideDiv = document.createElement('div');
+      slideDiv.className = `absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`;
+      slideDiv.id = `slide-item-${idx}`;
+      slideDiv.innerHTML = `<img src="${slide.image}" alt="${slide.title}" class="w-full h-full object-cover transform scale-100 origin-center ${idx === 0 ? 'slide-zoom' : ''}" />`;
+      sliderContainer.appendChild(slideDiv);
 
-        if (matchCat && matchPrice && matchBeds) {
-          card.classList.remove('hidden');
-          visibleCount++;
+      const dashDiv = document.createElement('div');
+      dashDiv.className = `relative w-10 md:w-16 h-[2px] bg-white/20 overflow-hidden cursor-pointer hover:bg-white/40 transition`;
+      dashDiv.onclick = () => jumpToSlide(idx);
+      dashDiv.innerHTML = `<div id="progress-bar-${idx}" class="absolute top-0 left-0 h-full bg-gold w-0"></div>`;
+      dashesContainer.appendChild(dashDiv);
+    });
+
+    function switchSlide(index) {
+      titleEl.style.opacity = '0';
+      descEl.style.opacity = '0';
+      
+      setTimeout(() => {
+        titleEl.textContent = slideData[index].title;
+        descEl.textContent = slideData[index].desc;
+        titleEl.style.opacity = '1';
+        descEl.style.opacity = '1';
+      }, 400);
+
+      slideData.forEach((_, idx) => {
+        const slide = document.getElementById(`slide-item-${idx}`);
+        const img = slide.querySelector('img');
+        const progress = document.getElementById(`progress-bar-${idx}`);
+
+        if (idx === index) {
+          slide.classList.replace('opacity-0', 'opacity-100');
+          slide.classList.replace('-z-10', 'z-0');
+          
+          img.classList.remove('slide-zoom');
+          void img.offsetWidth; 
+          img.classList.add('slide-zoom');
+
+          progress.classList.remove('progress-fill');
+          void progress.offsetWidth; 
+          progress.classList.add('progress-fill');
         } else {
-          card.classList.add('hidden');
+          slide.classList.replace('opacity-100', 'opacity-0');
+          slide.classList.replace('z-0', '-z-10');
+          progress.classList.remove('progress-fill');
+          setTimeout(() => {
+            if(idx !== currentSlideIdx) img.classList.remove('slide-zoom');
+          }, 1000);
         }
       });
 
-      propertyCount.textContent = visibleCount;
+      currentSlideIdx = index;
     }
 
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        filterTabs.forEach(t => {
-          t.classList.remove('active', 'bg-gold', 'text-black');
-          t.classList.add('bg-surface', 'text-stone-400');
-        });
-        tab.classList.add('active', 'bg-gold', 'text-black');
-        tab.classList.remove('bg-surface', 'text-stone-400');
+    function goNextSlide() {
+      const nextIdx = (currentSlideIdx + 1) % slideData.length;
+      switchSlide(nextIdx);
+    }
 
-        currentCategory = tab.getAttribute('data-category');
-        applyFilters();
-      });
-    });
+    function goPrevSlide() {
+      const prevIdx = (currentSlideIdx - 1 + slideData.length) % slideData.length;
+      switchSlide(prevIdx);
+    }
 
-    priceRange.addEventListener('input', (e) => {
-      const val = parseInt(e.target.value, 10);
-      priceDisplay.textContent = `$${val.toLocaleString()}`;
-      applyFilters();
-    });
+    function jumpToSlide(index) {
+      if(index === currentSlideIdx) return;
+      switchSlide(index);
+      resetSliderTimer();
+    }
 
-    bedFilter.addEventListener('change', applyFilters);
+    function resetSliderTimer() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(goNextSlide, SLIDE_DURATION);
+    }
 
-    resetFiltersBtn.addEventListener('click', () => {
-      priceRange.value = 2500000;
-      priceDisplay.textContent = '$2,500,000';
-      bedFilter.value = '0';
-      filterTabs[0].click();
-      applyFilters();
-    });
+    // Init First State
+    switchSlide(0);
+    resetSliderTimer();
+
+    document.getElementById('slider-next')?.addEventListener('click', () => { goNextSlide(); resetSliderTimer(); });
+    document.getElementById('slider-prev')?.addEventListener('click', () => { goPrevSlide(); resetSliderTimer(); });
 
     // 6. Interactive Mortgage Calculator
     const calcHomePrice = document.getElementById('calcHomePrice');
