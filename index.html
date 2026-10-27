@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marci Metzger | The Ridge Realty Group | Premier Real Estate</title>
   
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="Nearly 30 years of dedicated real estate stewardship across Pahrump Valley, Mountain Falls, and Southern Nevada.">
+  
+  <!-- Favicon (Generates a clean 'M' instantly) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 fill=%22%23D4AF37%22 font-family=%22serif%22>M</text></svg>">
+  
+  <!-- Open Graph / Social Media Preview Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://website-weld-eight-58.vercel.app/">
+  <meta property="og:title" content="Marci Metzger | Premier Real Estate">
+  <meta property="og:description" content="Explore exclusive luxury listings, custom desert estates, and championship golf course properties in Southern Nevada.">
+  <!-- Uses your first listing image as the social media preview cover -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,13 +59,18 @@
               '50%': { transform: 'translateY(-8px)' }
             },
             pulseGlow: {
-              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-              '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+              '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+              '50%': { opacity: '0.6', transform: 'scale(1.05)' }
+            },
+            spinSlow: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
             }
           },
           animation: {
             float: 'float 5s ease-in-out infinite',
-            pulseGlow: 'pulseGlow 6s ease-in-out infinite'
+            pulseGlow: 'pulseGlow 8s ease-in-out infinite',
+            spinSlow: 'spinSlow 30s linear infinite'
           }
         }
       }
@@ -64,6 +83,11 @@
     ::-webkit-scrollbar-track { background: #08090b; }
     ::-webkit-scrollbar-thumb { background: #252830; border-radius: 999px; }
     ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+    /* Preloader */
+    #preloader {
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     /* Ambient Cursor Glow */
     #cursorGlow {
@@ -117,6 +141,7 @@
     .delay-100 { transition-delay: 100ms; }
     .delay-200 { transition-delay: 200ms; }
     .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
 
     /* Range Slider Styling */
     input[type=range] {
@@ -134,14 +159,15 @@
       cursor: pointer;
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
       border: 2px solid #08090B;
-      transition: transform 0.15s ease;
+      transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-    /* Grain Overlay */
-    .grain-bg {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
-      background-size: 28px 28px;
+    /* Grain & Architectural Pattern Overlays */
+    .arch-grid {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 4rem 4rem;
     }
   </style>
 </head>
@@ -153,20 +179,20 @@
   <!-- Top Scroll Progress Bar -->
   <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-gold via-gold-light to-gold z-[10001] w-0 shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-75 ease-out"></div>
 
-  <!-- Cinematic Preloader (Flies into Navbar) -->
-  <div id="preloader" class="fixed inset-0 z-[10000] bg-obsidian flex flex-col items-center justify-center transition-colors duration-1000">
-    <div id="preloaderLogoCircle" class="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center bg-gold/5 shadow-[0_0_30px_rgba(212,175,55,0.2)] animate-pulse transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] z-50 origin-top-left">
-      <span class="font-serif text-3xl font-bold text-gold transition-colors duration-1000">M</span>
+  <!-- Cinematic Preloader -->
+  <div id="preloader" class="fixed inset-0 z-[10000] bg-obsidian flex flex-col items-center justify-center">
+    <div class="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center bg-gold/5 shadow-[0_0_30px_rgba(212,175,55,0.2)] animate-pulse">
+      <span class="font-serif text-3xl font-bold text-gold">M</span>
     </div>
-    <div id="preloaderText" class="mt-6 text-xs uppercase tracking-[0.3em] text-stone-400 font-medium transition-opacity duration-500">The Ridge Realty Group</div>
+    <div class="mt-6 text-xs uppercase tracking-[0.3em] text-stone-400 font-medium">The Ridge Realty Group</div>
   </div>
 
   <!-- Interactive Glowing Cursor -->
   <div id="cursorGlow" class="hidden md:block"></div>
 
-  <!-- Ambient Cinematic Spotlights -->
-  <div class="fixed top-0 left-1/4 w-[700px] h-[700px] bg-gold/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulseGlow"></div>
-  <div class="fixed bottom-0 right-10 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+  <!-- Top Ambient Spotlights -->
+  <div class="fixed top-[-10%] left-[-10%] w-[700px] h-[700px] bg-gold/10 rounded-full blur-[140px] pointer-events-none z-0 animate-pulseGlow"></div>
+  <div class="fixed top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[150px] pointer-events-none z-0 animate-spinSlow"></div>
 
   <!-- ================= LUXURY NAVIGATION (Minimalist & Dynamic Island) ================= -->
   <nav id="navbar" class="fixed top-0 left-1/2 -translate-x-1/2 w-full z-[100] bg-transparent transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-b border-transparent">
@@ -174,12 +200,11 @@
       
       <!-- Minimalist Logo Branding -->
       <a href="#" class="flex items-center gap-3 group">
-        <!-- opacity-0 initially for the FLIP animation from preloader -->
-        <div id="navLogoCircle" class="w-11 h-11 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:border-gold transition duration-500 shadow-lg relative overflow-hidden opacity-0">
+        <div class="w-11 h-11 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:border-gold transition duration-500 shadow-lg relative overflow-hidden">
           <div class="absolute inset-0 bg-gold/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
           <span class="font-serif text-xl font-bold text-white group-hover:text-gold transition relative z-10">M</span>
         </div>
-        <div id="navTextBrand" class="flex flex-col drop-shadow-md hidden sm:flex opacity-0 transition-opacity duration-1000">
+        <div class="flex flex-col drop-shadow-md hidden sm:flex">
           <span class="font-serif text-2xl tracking-[0.18em] font-light text-white transition duration-300">MARCI METZGER</span>
         </div>
       </a>
@@ -1274,53 +1299,16 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // 0. Cinematic Preloader to Navbar Logo Animation (Hero FLIP)
+    // 0. Cinematic Preloader Logic
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
-      const preloaderLogo = document.getElementById('preloaderLogoCircle');
-      const preloaderText = document.getElementById('preloaderText');
-      const navLogo = document.getElementById('navLogoCircle');
-      const navText = document.getElementById('navTextBrand');
-      const mText = preloaderLogo.querySelector('span');
-
       setTimeout(() => {
-        // Fade out background & text
-        preloader.classList.remove('bg-obsidian');
-        preloader.style.backgroundColor = 'transparent'; 
-        preloaderText.style.opacity = '0';
-        
-        // Stop pulse
-        preloaderLogo.classList.remove('animate-pulse');
-
-        // Calculate FLIP mathematical coordinates
-        const startRect = preloaderLogo.getBoundingClientRect();
-        const destRect = navLogo.getBoundingClientRect();
-        
-        const deltaX = (destRect.left + destRect.width / 2) - (startRect.left + startRect.width / 2);
-        const deltaY = (destRect.top + destRect.height / 2) - (startRect.top + startRect.height / 2);
-        const scale = destRect.width / startRect.width;
-
-        // Execute Flight Animation
-        preloaderLogo.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
-        
-        // Morph colors to match the navigation bar
-        mText.classList.remove('text-gold');
-        mText.classList.add('text-white');
-        preloaderLogo.classList.remove('border-gold/40', 'bg-gold/5', 'shadow-[0_0_30px_rgba(212,175,55,0.2)]');
-        preloaderLogo.classList.add('border-white/30', 'bg-black/20');
-
-        // Fade in the brand text halfway through the flight
+        preloader.style.opacity = '0';
         setTimeout(() => {
-          navText.classList.remove('opacity-0');
-        }, 500);
-        
-        // Reveal true nav logo and destroy preloader element
-        setTimeout(() => {
-          navLogo.classList.remove('opacity-0');
-          preloader.remove(); 
-        }, 1000);
-        
-      }, 600); // Initial screen hold delay
+          preloader.style.visibility = 'hidden';
+          preloader.style.display = 'none';
+        }, 800); // Matches the CSS transition time
+      }, 500); // Slight delay so it doesn't just flash instantly
     });
 
     // 1. Initialize Lucide Icons
@@ -1697,4 +1685,3 @@
   </script>
 </body>
 </html>
-```eof
