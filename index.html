@@ -40,12 +40,17 @@
             }
           },
           keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' }
+            },
             pulseGlow: {
               '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
               '50%': { opacity: '0.8', transform: 'scale(1.05)' }
             }
           },
           animation: {
+            float: 'float 5s ease-in-out infinite',
             pulseGlow: 'pulseGlow 6s ease-in-out infinite'
           }
         }
@@ -59,6 +64,11 @@
     ::-webkit-scrollbar-track { background: #08090b; }
     ::-webkit-scrollbar-thumb { background: #252830; border-radius: 999px; }
     ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+    /* Preloader */
+    #preloader {
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     /* Ambient Cursor Glow */
     #cursorGlow {
@@ -103,7 +113,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); /* Apple buttery easing */
+      transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .reveal.active {
       opacity: 1;
@@ -130,7 +140,7 @@
       cursor: pointer;
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
       border: 2px solid #08090B;
-      transition: transform 0.15s ease;
+      transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
@@ -143,6 +153,14 @@
 </head>
 <body class="bg-obsidian text-stone-200 selection:bg-gold selection:text-black min-h-screen relative overflow-x-hidden">
 
+  <!-- Cinematic Preloader -->
+  <div id="preloader" class="fixed inset-0 z-[10000] bg-obsidian flex flex-col items-center justify-center">
+    <div class="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center bg-gold/5 shadow-[0_0_30px_rgba(212,175,55,0.2)] animate-pulse">
+      <span class="font-serif text-3xl font-bold text-gold">M</span>
+    </div>
+    <div class="mt-6 text-xs uppercase tracking-[0.3em] text-stone-400 font-medium">The Ridge Realty Group</div>
+  </div>
+
   <!-- Interactive Glowing Cursor -->
   <div id="cursorGlow" class="hidden md:block"></div>
 
@@ -150,7 +168,7 @@
   <div class="fixed top-0 left-1/4 w-[700px] h-[700px] bg-gold/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulseGlow"></div>
   <div class="fixed bottom-0 right-10 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
 
-  <!-- ================= LUXURY NAVIGATION (Dynamic Island) ================= -->
+  <!-- ================= LUXURY NAVIGATION (Minimalist & Dynamic Island) ================= -->
   <nav id="navbar" class="fixed top-0 left-1/2 -translate-x-1/2 w-full z-[100] bg-transparent transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-b border-transparent">
     <div id="navInner" class="max-w-7xl mx-auto px-6 md:px-8 h-20 md:h-24 flex items-center justify-between transition-all duration-500">
       
@@ -291,7 +309,6 @@
                 <option value="mountain-springs">Mountain Springs</option>
                 <option value="nelson">Nelson</option>
                 <option value="north-las-vegas">North Las Vegas</option>
-                <option value="other">Other</option>
                 <option value="overton">Overton</option>
                 <option value="pahrump">Pahrump</option>
                 <option value="palm-gardens">Palm Gardens</option>
@@ -302,6 +319,7 @@
                 <option value="sandy-valley">Sandy Valley</option>
                 <option value="searchlight">Searchlight</option>
                 <option value="tonopah">Tonopah</option>
+                <option value="other">Other</option>
               </select>
               <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none"></i>
             </div>
@@ -835,12 +853,12 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs uppercase tracking-wider text-stone-400 mb-2">Interest Rate (%)</label>
-              <input type="number" id="calcRate" step="0.1" value="6.5" class="w-full bg-[#111317] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition">
+              <input type="number" id="calcRate" step="0.1" value="6.5" class="w-full bg-[#111317] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold hover:border-white/30 transition duration-300">
             </div>
             <div>
               <label class="block text-xs uppercase tracking-wider text-stone-400 mb-2">Loan Term</label>
               <div class="relative">
-                <select id="calcTerm" class="w-full bg-[#111317] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition appearance-none cursor-pointer">
+                <select id="calcTerm" class="w-full bg-[#111317] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold hover:border-white/30 transition duration-300 appearance-none cursor-pointer">
                   <option value="30">30 Years Fixed</option>
                   <option value="15">15 Years Fixed</option>
                 </select>
@@ -933,6 +951,62 @@
     </div>
   </section>
 
+  <!-- ================= TESTIMONIALS (Social Proof) ================= -->
+  <section id="testimonials" class="py-24 max-w-7xl mx-auto px-6 relative border-t border-white/5 bg-surface/10">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
+        <i data-lucide="star" class="w-4 h-4"></i> Client Experiences
+      </span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-white font-normal mt-3 tracking-wide">Trusted by the Valley</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Review 1 -->
+      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-100 flex flex-col justify-between">
+        <div>
+          <div class="flex gap-1 text-gold mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-stone-300 font-light italic leading-relaxed text-sm">"Marci is an absolute powerhouse. She found us an off-market property in Mountain Falls that checked every single box. Her negotiation skills saved us thousands."</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10">
+          <p class="text-white font-medium text-sm">Sarah & James L.</p>
+          <p class="text-stone-500 text-xs mt-0.5">Relocated from California</p>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-200 flex flex-col justify-between">
+        <div>
+          <div class="flex gap-1 text-gold mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-stone-300 font-light italic leading-relaxed text-sm">"We tried selling with another agent for 6 months. Marci took over, brought in professional staging and drone photography, and got it sold above asking in 14 days."</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10">
+          <p class="text-white font-medium text-sm">Michael T.</p>
+          <p class="text-stone-500 text-xs mt-0.5">Pahrump Valley Seller</p>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-300 flex flex-col justify-between">
+        <div>
+          <div class="flex gap-1 text-gold mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-stone-300 font-light italic leading-relaxed text-sm">"As an investor, I need straight answers and market data. Marci knows every square inch of commercial land in this valley. She is the only broker I use."</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10">
+          <p class="text-white font-medium text-sm">David W.</p>
+          <p class="text-stone-500 text-xs mt-0.5">Commercial Investor</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ================= CONTACT & PRIVATE INQUIRY ================= -->
   <section id="contact" class="py-24 max-w-7xl mx-auto px-6 border-t border-white/5 bg-surface/20">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -990,21 +1064,17 @@
             </div>
           </div>
 
-          <!-- Social Media Connect with Direct Inline SVGs -->
+          <!-- Social Media Connect with Direct Inline SVGs to guarantee loading -->
           <div class="pt-4 flex items-center gap-4">
-            <!-- Instagram -->
             <a href="https://www.instagram.com/marcimetzger_theridge/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
             </a>
-            <!-- Facebook -->
             <a href="https://www.facebook.com/MarciHomes/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
             </a>
-            <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/marci-metzger-30642496/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
             </a>
-            <!-- Yelp -->
             <a href="https://www.yelp.com/biz/marci-metzger-the-ridge-realty-pahrump" target="_blank" rel="noopener noreferrer" aria-label="Yelp" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M42.3 227.1L170 197.8c11-2.5 21.8 4.2 24.3 15.2s-4.2 21.8-15.2 24.3L51.3 266.6c-11 2.5-21.8-4.2-24.3-15.2s4.2-21.8 15.3-24.3zM218.4 200c5.3 10.1 1.4 22.6-8.7 27.9l-117.8 61.6c-10.1 5.3-22.6 1.4-27.9-8.7s-1.4-22.6 8.7-27.9l117.8-61.6c10.1-5.3 22.6-1.4 27.9 8.7zm66.1-41.9c11.1 1.5 18.9 11.7 17.4 22.8l-18.4 130.6c-1.5 11.1-11.7 18.9-22.8 17.4s-18.9-11.7-17.4-22.8l18.4-130.6c1.4-11.1 11.6-18.9 22.8-17.4zm-75.7 101.4c7.6 8.2 6.1 21-3.1 27.7L94.5 372.5c-9.2 6.7-22.2 4.1-28.8-5-6.7-9.2-4.1-22.2 5-28.8l111.1-85.3c9.3-6.7 22.3-4.1 28.9 5zM170.8 14.8c11-2.8 22.2 4.1 24.6 15.1l32.1 143.1c2.4 11-4.1 22.2-15.1 24.6-11 2.4-22.2-4.1-24.6-15.1L155.7 39.4c-2.4-11 4.1-22.2 15.1-24.6z"/></svg>
             </a>
@@ -1105,6 +1175,11 @@
     <span id="globalToastMessage" class="font-medium tracking-wide"></span>
   </div>
 
+  <!-- ================= BACK TO TOP BUTTON ================= -->
+  <button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-10 right-10 z-50 w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:text-gold hover:border-gold hover:scale-110 shadow-2xl opacity-0 translate-y-10 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] pointer-events-none">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
   <!-- ================= LUXURY FOOTER ================= -->
   <footer class="border-t border-white/10 bg-[#060708] py-16 text-stone-400 text-xs">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 reveal">
@@ -1126,19 +1201,15 @@
 
         <!-- Social Media Footer Connect with Direct Inline SVGs -->
         <div class="flex items-center gap-3 pt-2">
-          <!-- Instagram -->
           <a href="https://www.instagram.com/marcimetzger_theridge/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
           </a>
-          <!-- Facebook -->
           <a href="https://www.facebook.com/MarciHomes/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
           </a>
-          <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/marci-metzger-30642496/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
           </a>
-          <!-- Yelp -->
           <a href="https://www.yelp.com/biz/marci-metzger-the-ridge-realty-pahrump" target="_blank" rel="noopener noreferrer" aria-label="Yelp" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-stone-400 hover:text-gold hover:bg-gold/10 hover:scale-110 transition duration-300 border border-white/5 hover:border-gold/30">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M42.3 227.1L170 197.8c11-2.5 21.8 4.2 24.3 15.2s-4.2 21.8-15.2 24.3L51.3 266.6c-11 2.5-21.8-4.2-24.3-15.2s4.2-21.8 15.3-24.3zM218.4 200c5.3 10.1 1.4 22.6-8.7 27.9l-117.8 61.6c-10.1 5.3-22.6 1.4-27.9-8.7s-1.4-22.6 8.7-27.9l117.8-61.6c10.1-5.3 22.6-1.4 27.9 8.7zm66.1-41.9c11.1 1.5 18.9 11.7 17.4 22.8l-18.4 130.6c-1.5 11.1-11.7 18.9-22.8 17.4s-18.9-11.7-17.4-22.8l18.4-130.6c1.4-11.1 11.6-18.9 22.8-17.4zm-75.7 101.4c7.6 8.2 6.1 21-3.1 27.7L94.5 372.5c-9.2 6.7-22.2 4.1-28.8-5-6.7-9.2-4.1-22.2 5-28.8l111.1-85.3c9.3-6.7 22.3-4.1 28.9 5zM170.8 14.8c11-2.8 22.2 4.1 24.6 15.1l32.1 143.1c2.4 11-4.1 22.2-15.1 24.6-11 2.4-22.2-4.1-24.6-15.1L155.7 39.4c-2.4-11 4.1-22.2 15.1-24.6z"/></svg>
           </a>
@@ -1190,22 +1261,32 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
+    // 0. Cinematic Preloader Logic
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.visibility = 'hidden';
+          preloader.style.display = 'none';
+        }, 800); // Matches the CSS transition time
+      }, 500); // Slight delay so it doesn't just flash instantly
+    });
+
     // 1. Initialize Lucide Icons
     lucide.createIcons();
 
     // 2. Apple-inspired Intersection Observer (Scroll Reveal)
-    // This triggers the fade-up animations when elements enter the screen
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          // Optional: Stop observing once revealed so it doesn't animate out and in constantly
           revealObserver.unobserve(entry.target); 
         }
       });
     }, { 
-      threshold: 0.1, // Trigger when 10% of the element is visible
-      rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the exact bottom
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
     });
 
     document.querySelectorAll('.reveal').forEach((el) => {
@@ -1228,7 +1309,7 @@
     function openMenu() {
       sideDrawer.classList.remove('translate-x-full');
       drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.body.style.overflow = 'hidden'; 
     }
     
     function closeMenu() {
@@ -1275,30 +1356,37 @@
     
     const navbar = document.getElementById('navbar');
     const navInner = document.getElementById('navInner');
+    const bttBtn = document.getElementById('backToTopBtn');
 
-    // Nav Scroll Effect (Dynamic Island Animation)
+    // Nav Scroll Effect (Dynamic Island & Back to Top)
     window.addEventListener('scroll', () => {
+      // Dynamic Island Logic
       if (window.scrollY > 50) {
-        // Apple-style Island State
         navbar.classList.remove('top-0', 'w-full', 'bg-transparent', 'border-transparent', 'border-b');
-        navbar.classList.add('top-4', 'md:top-6', 'w-[95%]', 'max-w-4xl', 'bg-obsidian/90', 'backdrop-blur-xl', 'border', 'border-white/10', 'rounded-full', 'shadow-[0_10px_40px_rgba(0,0,0,0.8)]');
-        
+        navbar.classList.add('top-4', 'md:top-6', 'w-[95%]', 'max-w-4xl', 'bg-obsidian/90', 'backdrop-blur-xl', 'border', 'border-white/10', 'rounded-full', 'shadow-2xl', 'shadow-black/50');
         navInner.classList.remove('h-20', 'md:h-24');
         navInner.classList.add('h-16', 'md:h-20');
       } else {
-        // Full Width Transparent State
         navbar.classList.add('top-0', 'w-full', 'bg-transparent', 'border-transparent', 'border-b');
-        navbar.classList.remove('top-4', 'md:top-6', 'w-[95%]', 'max-w-4xl', 'bg-obsidian/90', 'backdrop-blur-xl', 'border', 'border-white/10', 'rounded-full', 'shadow-[0_10px_40px_rgba(0,0,0,0.8)]');
-        
+        navbar.classList.remove('top-4', 'md:top-6', 'w-[95%]', 'max-w-4xl', 'bg-obsidian/90', 'backdrop-blur-xl', 'border', 'border-white/10', 'rounded-full', 'shadow-2xl', 'shadow-black/50');
         navInner.classList.add('h-20', 'md:h-24');
         navInner.classList.remove('h-16', 'md:h-20');
+      }
+
+      // Back to Top Logic
+      if (window.scrollY > 600) {
+        bttBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+        bttBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      } else {
+        bttBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        bttBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
       }
     });
 
     // Initialize Slides & Indicators
     slideData.forEach((slide, idx) => {
       const slideDiv = document.createElement('div');
-      slideDiv.className = `absolute inset-0 transition-opacity duration-1000 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${idx === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`;
+      slideDiv.className = `absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`;
       slideDiv.id = `slide-item-${idx}`;
       slideDiv.innerHTML = `<img src="${slide.image}" alt="${slide.title}" class="w-full h-full object-cover transform scale-100 origin-center ${idx === 0 ? 'slide-zoom' : ''}" />`;
       sliderContainer.appendChild(slideDiv);
@@ -1424,7 +1512,7 @@
     });
     updateMortgage();
 
-    // 7. Custom Global Toast System (Replaces ugly alerts)
+    // 7. Custom Global Toast System
     function showGlobalToast(message) {
       const toast = document.getElementById('globalToast');
       const toastMsg = document.getElementById('globalToastMessage');
@@ -1467,11 +1555,9 @@
       modalSpecs.textContent = specs;
       modalDesc.textContent = desc;
       
-      // Remove hidden first to render the element on the screen
       propertyModal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
       
-      // Small delay to allow the browser to register the element before animating
       setTimeout(() => {
         propertyModal.classList.remove('opacity-0');
         propertyModal.classList.add('opacity-100');
@@ -1482,21 +1568,18 @@
     }
 
     function closeModal() {
-      // Trigger out-animations
       propertyModal.classList.remove('opacity-100');
       propertyModal.classList.add('opacity-0');
       
       modalContentCard.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
       modalContentCard.classList.add('scale-95', 'translate-y-10', 'opacity-0');
 
-      // Wait for animations to finish (500ms) before hiding completely
       setTimeout(() => {
         propertyModal.classList.add('hidden');
         document.body.style.overflow = '';
       }, 500);
     }
 
-    // Close modal if user clicks on the dark overlay background outside the modal card
     propertyModal.addEventListener('click', (e) => {
       if (e.target === propertyModal) {
         closeModal();
@@ -1523,14 +1606,12 @@
     const lightboxImage = document.getElementById('lightboxImage');
 
     function openLightbox(primarySrc, fallbackSrc) {
-      document.body.style.overflow = 'hidden'; // stop background scrolling
+      document.body.style.overflow = 'hidden'; 
       
-      // Try local webp first, if error (not found), use the unsplash fallback
       lightboxImage.src = primarySrc;
       lightboxImage.onerror = () => { lightboxImage.src = fallbackSrc; };
       
       lightboxModal.classList.remove('hidden');
-      // small delay to allow display:block to render before transitioning opacity
       setTimeout(() => {
         lightboxModal.classList.remove('opacity-0');
         lightboxImage.classList.remove('scale-95');
@@ -1545,11 +1626,10 @@
       lightboxImage.classList.add('scale-95');
       setTimeout(() => {
         lightboxModal.classList.add('hidden');
-        lightboxImage.src = ""; // clear source
+        lightboxImage.src = ""; 
       }, 300);
     }
 
-    // Close lightbox on clicking outside the image
     lightboxModal.addEventListener('click', (e) => {
       if (e.target === lightboxModal || e.target.parentElement === lightboxModal) {
         closeLightbox();
