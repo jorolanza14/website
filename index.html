@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marci Metzger | The Ridge Realty Group | Premier Pahrump Real Estate</title>
+  <title>Marci Metzger | The Ridge Realty Group | Premier Real Estate</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,19 +60,10 @@
 
   <style>
     /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 7px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #08090b;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #252830;
-      border-radius: 999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #d4af37;
-    }
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #08090b; }
+    ::-webkit-scrollbar-thumb { background: #252830; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
     /* Ambient Cursor Glow */
     #cursorGlow {
@@ -102,16 +93,12 @@
     }
 
     /* Hero Slider Animations */
-    .slide-zoom {
-      animation: slideZoom 6s linear forwards;
-    }
+    .slide-zoom { animation: slideZoom 6s linear forwards; }
     @keyframes slideZoom {
       0% { transform: scale(1); }
       100% { transform: scale(1.08); }
     }
-    .progress-fill {
-      animation: fillProgress 6s linear forwards;
-    }
+    .progress-fill { animation: fillProgress 6s linear forwards; }
     @keyframes fillProgress {
       0% { width: 0%; }
       100% { width: 100%; }
@@ -135,9 +122,7 @@
       border: 2px solid #08090B;
       transition: transform 0.15s ease;
     }
-    input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
-    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
     /* Grain Overlay */
     .grain-bg {
@@ -183,7 +168,7 @@
         <i data-lucide="x" class="w-6 h-6 group-hover:rotate-90 transition-transform duration-300"></i>
       </button>
     </div>
-    <!-- 4 Exact Tabs as Requested -->
+    <!-- 4 Exact Tabs -->
     <div class="flex-1 flex flex-col justify-center px-12 pb-24 space-y-10">
       <a href="#home" class="drawer-link group flex items-center justify-between text-stone-300 hover:text-white transition duration-300">
         <span class="font-sans text-xl sm:text-2xl font-bold tracking-[0.2em] uppercase relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-gold after:transition-all after:duration-300 group-hover:after:w-full">HOME</span>
@@ -245,7 +230,7 @@
           <i data-lucide="map-pin" class="w-4 h-4 text-white/70 mr-2 hidden sm:block"></i>
           <input type="text" placeholder="Location, neighborhood, or zip..." class="w-full bg-transparent text-white placeholder-stone-300 text-sm focus:outline-none font-medium">
         </div>
-        <button onclick="alert('Filtering properties...')" class="w-full sm:w-auto px-8 py-3.5 bg-obsidian hover:bg-gold hover:text-black text-white rounded-full text-xs font-semibold tracking-widest uppercase transition duration-300 shadow-lg">
+        <button onclick="showGlobalToast('Filtering properties to match your criteria...')" class="w-full sm:w-auto px-8 py-3.5 bg-obsidian hover:bg-gold hover:text-black text-white rounded-full text-xs font-semibold tracking-widest uppercase transition duration-300 shadow-lg">
           Search
         </button>
       </div>
@@ -274,7 +259,6 @@
   <!-- ================= AFFILIATIONS / LOGOS BAND ================= -->
   <section class="py-8 border-b border-white/5 bg-obsidian relative z-20">
     <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-10 sm:gap-20">
-      <!-- Added CSS invert, grayscale, and opacity for that high-end silver frost look on dark themes -->
       <img src="logo1.webp" alt="The Ridge Realty Group" class="h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-105 transition duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=The+Ridge'; this.className='h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
       <img src="logo2.webp" alt="Equal Housing Opportunity" class="h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-105 transition duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=Equal+Housing'; this.className='h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
       <img src="logo3.webp" alt="REALTOR" class="h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-105 transition duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=REALTOR'; this.className='h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
@@ -294,7 +278,7 @@
 
     <div class="space-y-24">
       
-      <!-- Block 1 (Image Left, Text Right) -->
+      <!-- Block 1 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1">
           <div class="aspect-video overflow-hidden">
@@ -305,17 +289,17 @@
         <div class="order-2 space-y-6">
           <h3 class="font-serif text-3xl md:text-4xl text-white font-normal">Top Residential Sales Last 5 Years</h3>
           <p class="text-stone-300 font-light leading-relaxed">
-            We helped nearly 90 clients in 2021, and closed 28.5 million in sales! Our team works hard everyday to grow and learn, so that we may continue to excel in our market. Our clients deserve our best, & we want to make sure our best is better every year. By consistently leveraging data-driven market insights and an unwavering commitment to client success, we have established a benchmark for luxury real estate in Southern Nevada. Your goals become our mission, ensuring every transaction is handled with elite precision and care.
+            We helped nearly 90 clients in 2021, and closed 28.5 million in sales! Our team works hard everyday to grow and learn, so that we may continue to excel in our market. Our clients deserve our best, & we want to make sure our best is better every year. By consistently leveraging data-driven market insights and an unwavering commitment to client success, we have established a benchmark for luxury real estate in Southern Nevada.
           </p>
         </div>
       </div>
 
-      <!-- Block 2 (Text Left, Image Right on Desktop) -->
+      <!-- Block 2 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="order-2 lg:order-1 space-y-6 lg:text-right">
           <h3 class="font-serif text-3xl md:text-4xl text-white font-normal">Don't Just List it...</h3>
           <p class="text-stone-300 font-light leading-relaxed">
-            Get it SOLD! We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home. We don't just rely on traditional methods; we deploy aggressive digital marketing campaigns, high-end architectural photography, and targeted networking to reach qualified buyers globally. From strategic staging advice to masterful contract negotiation, we protect your equity and streamline the entire selling process.
+            Get it SOLD! We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home. We don't just rely on traditional methods; we deploy aggressive digital marketing campaigns, high-end architectural photography, and targeted networking to reach qualified buyers globally. From strategic staging advice to masterful contract negotiation, we protect your equity.
           </p>
         </div>
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1 lg:order-2">
@@ -326,7 +310,7 @@
         </div>
       </div>
 
-      <!-- Block 3 (Image Left, Text Right) -->
+      <!-- Block 3 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1">
           <div class="aspect-video overflow-hidden">
@@ -337,7 +321,7 @@
         <div class="order-2 space-y-6">
           <h3 class="font-serif text-3xl md:text-4xl text-white font-normal">Guide to Buyers</h3>
           <p class="text-stone-300 font-light leading-relaxed">
-            Nobody knows the market like we do. Enjoy having a pro at your service. Market analysis, upgrades lists, contractors on speed dial, & more! Whether you are relocating to Pahrump, seeking a golf course estate at Mountain Falls, or purchasing your first home, we provide a concierge-level experience. We guide you through every neighborhood nuance, structural consideration, and contract detail to secure your perfect property with absolute confidence.
+            Nobody knows the market like we do. Enjoy having a pro at your service. Market analysis, upgrades lists, contractors on speed dial, & more! Whether you are relocating to Pahrump, seeking a golf course estate at Mountain Falls, or purchasing your first home, we provide a concierge-level experience. We guide you through every neighborhood nuance, structural consideration, and contract detail to secure your perfect property.
           </p>
         </div>
       </div>
@@ -346,7 +330,7 @@
   </section>
 
   <!-- ================= PROPERTY SHOWCASE GRID ================= -->
-  <section id="listings" class="py-24 max-w-7xl mx-auto px-6">
+  <section id="listings" class="py-24 max-w-7xl mx-auto px-6 border-t border-white/5 bg-surface/30">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
       <div>
         <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex items-center gap-2">
@@ -361,15 +345,15 @@
 
     <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       
-      <!-- Property 1 -->
+      <!-- Property 1 (.jpg) -->
       <article class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
         <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=900&auto=format&fit=crop" alt="4751 W Adkisson Street" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
+          <img src="listing1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop'" alt="3750 Las Vegas Boulevard #4303" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
           
           <div class="absolute top-4 left-4 flex gap-2">
             <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30">
-              Luxury Estate
+              Active Listing
             </span>
           </div>
 
@@ -379,48 +363,44 @@
 
           <div class="absolute bottom-4 left-4">
             <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$1,850,000</div>
+            <div class="font-serif text-3xl text-white font-medium">$12,000,000</div>
           </div>
         </div>
 
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition">4751 W Adkisson Street</h3>
+            <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">3750 Las Vegas Blvd #4303</h3>
             <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Pahrump, NV 89048
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89158
             </p>
 
-            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div>
+            <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
+              <div class="border-r border-white/5">
                 <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">4 Beds</span>
+                <span class="font-semibold text-white">2 Beds</span>
               </div>
               <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
-                <span class="font-semibold text-white">5 Baths</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Area</span>
-                <span class="font-semibold text-white">5,530 SqFt</span>
+                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Status</span>
+                <span class="font-semibold text-emerald-400">Available</span>
               </div>
             </div>
           </div>
 
-          <button onclick="openModal('4751 W Adkisson Street', '$1,850,000', '4 Beds • 5 Baths • 5,530 SqFt', 'Custom luxury desert estate featuring an entertainer courtyard, gourmet kitchen, resort pool, and 4-car garage. Over an acre of private grounds with panoramic Spring Mountain views.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
-            View Details & Virtual Tour
+          <button onclick="openModal('3750 Las Vegas Blvd #4303', '$12,000,000', '2 Beds • Las Vegas Strip', 'Unrivaled penthouse luxury high above the Las Vegas Strip. Floor-to-ceiling windows offering spectacular panoramic views of the entire valley.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
+            View Details & Gallery
           </button>
         </div>
       </article>
 
-      <!-- Property 2 -->
+      <!-- Property 2 (.jpg) -->
       <article class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
         <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop" alt="2221 W Windsong Lane" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
+          <img src="listing2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900&auto=format&fit=crop'" alt="3750 Las Vegas Boulevard #4304" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
           
           <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-amber-300 border border-amber-300/30">
-              Mountain Falls
+            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30">
+              Active Listing
             </span>
           </div>
 
@@ -430,48 +410,44 @@
 
           <div class="absolute bottom-4 left-4">
             <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$1,300,000</div>
+            <div class="font-serif text-3xl text-white font-medium">$9,000,000</div>
           </div>
         </div>
 
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition">2221 W Windsong Lane</h3>
+            <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">3750 Las Vegas Blvd #4304</h3>
             <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Mountain Falls, NV 89061
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89158
             </p>
 
-            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div>
+            <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
+              <div class="border-r border-white/5">
                 <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">3 Beds</span>
+                <span class="font-semibold text-white">2 Beds</span>
               </div>
               <div>
                 <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
                 <span class="font-semibold text-white">3 Baths</span>
               </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Area</span>
-                <span class="font-semibold text-white">1,876 SqFt</span>
-              </div>
             </div>
           </div>
 
-          <button onclick="openModal('2221 W Windsong Lane', '$1,300,000', '3 Beds • 3 Baths • 1,876 SqFt', 'Fronting the prestigious Mountain Falls championship golf links. High ceilings, expansive covered patio, golf cart parking, and full community club privileges.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
-            View Details & Virtual Tour
+          <button onclick="openModal('3750 Las Vegas Blvd #4304', '$9,000,000', '2 Beds • 3 Baths', 'Sophisticated evening entertaining space featuring custom dark stone finishes, modern lighting installations, and direct views of the iconic Strip neon.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
+            View Details & Gallery
           </button>
         </div>
       </article>
 
-      <!-- Property 3 -->
+      <!-- Property 3 (.jpg) -->
       <article class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
         <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900&auto=format&fit=crop" alt="4190 N Equus Court" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
+          <img src="listing3.jpg" onerror="this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=900&auto=format&fit=crop'" alt="700 W Carson Avenue #3203" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
           
           <div class="absolute top-4 left-4 flex gap-2">
             <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30">
-              Virtual Showing
+              Active Listing
             </span>
           </div>
 
@@ -481,39 +457,42 @@
 
           <div class="absolute bottom-4 left-4">
             <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$1,275,000</div>
+            <div class="font-serif text-3xl text-white font-medium">$8,433,600</div>
           </div>
         </div>
 
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition">4190 N Equus Court</h3>
+            <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">700 W Carson Ave #3203</h3>
             <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Pahrump, NV 89060
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89106
             </p>
 
-            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div>
+            <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
+              <div class="border-r border-white/5">
                 <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">3 Beds</span>
+                <span class="font-semibold text-white">2 Beds</span>
               </div>
               <div>
                 <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
                 <span class="font-semibold text-white">3 Baths</span>
               </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Area</span>
-                <span class="font-semibold text-white">2,456 SqFt</span>
-              </div>
             </div>
           </div>
 
-          <button onclick="openModal('4190 N Equus Court', '$1,275,000', '3 Beds • 3 Baths • 2,456 SqFt', 'Equestrian-friendly custom home zoned for horses with detached RV barn, high-efficiency solar, dual master suites, and sprawling outdoor kitchen.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
-            View Details & Virtual Tour
+          <button onclick="openModal('700 W Carson Ave #3203', '$8,433,600', '2 Beds • 3 Baths', 'Stunning architectural masterpiece offering unmatched urban luxury, resort-style amenities, and lush palm-lined grounds in the heart of the city.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
+            View Details & Gallery
           </button>
         </div>
       </article>
 
+    </div>
+
+    <!-- "View More" Button -->
+    <div class="mt-14 text-center">
+      <button onclick="showGlobalToast('Loading complete property portfolio from MLS...')" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs uppercase tracking-[0.2em] backdrop-blur-md transition duration-300">
+        View Entire Portfolio <i data-lucide="arrow-right" class="w-4 h-4 text-gold"></i>
+      </button>
     </div>
   </section>
 
@@ -524,6 +503,9 @@
     
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
+          <i data-lucide="camera" class="w-4 h-4"></i> Visual Portfolio
+        </span>
         <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 tracking-wide uppercase">Photo Gallery</h2>
         <div class="w-24 h-[1px] bg-gold/30 mx-auto mt-6"></div>
       </div>
@@ -536,9 +518,7 @@
           <img src="gallery1.webp" onerror="this.src='https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery feature" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
           <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 scale-75 group-hover:scale-100">
-            <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white">
-              <i data-lucide="maximize-2" class="w-5 h-5"></i>
-            </div>
+            <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white"><i data-lucide="maximize-2" class="w-5 h-5"></i></div>
           </div>
         </div>
 
@@ -604,7 +584,7 @@
   <section id="about" class="py-24 bg-surface/40 border-y border-white/5 relative grain-bg">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
       
-      <!-- Portrait Card with Moving Gold Frame -->
+      <!-- Portrait Card -->
       <div class="lg:col-span-5 relative">
         <div class="relative rounded-3xl overflow-hidden glass-gold p-2 shadow-2xl">
           <div class="rounded-2xl overflow-hidden relative aspect-[3/4]">
@@ -624,7 +604,7 @@
         </div>
       </div>
 
-      <!-- Editorial Bio & Interactive Career Timeline Tabs -->
+      <!-- Bio & Details -->
       <div class="lg:col-span-7 space-y-8">
         <div>
           <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex items-center gap-2">
@@ -639,7 +619,7 @@
           Marci was a licensed REALTOR®, then managing broker in Washington State before bringing her passion and high-volume expertise to Southern Nevada in 1995. With nearly 30 years of continuous active practice, she has navigated buyers and sellers through every real estate cycle imaginable.
         </p>
 
-        <!-- Quote Block (In Her Words) -->
+        <!-- Quote Block -->
         <div id="words" class="p-8 rounded-2xl glass-panel border-l-4 border-gold relative">
           <i data-lucide="quote" class="w-8 h-8 text-gold/20 absolute top-4 right-4"></i>
           <p class="font-serif italic text-lg sm:text-xl text-stone-200 leading-relaxed">
@@ -651,7 +631,7 @@
           </div>
         </div>
 
-        <!-- Career Milestones Accordion / Badges -->
+        <!-- Career Milestones -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
           <div class="p-4 rounded-xl bg-surface border border-white/5">
             <div class="text-gold font-semibold text-sm">Washington Roots</div>
@@ -668,11 +648,10 @@
         </div>
 
       </div>
-
     </div>
   </section>
 
-  <!-- ================= INTERACTIVE MORTGAGE & AFFORDABILITY CALCULATOR ================= -->
+  <!-- ================= INTERACTIVE MORTGAGE ESTIMATOR ================= -->
   <section id="calculator" class="py-24 bg-surface/60 border-t border-white/5 relative">
     <div class="max-w-5xl mx-auto px-6">
       
@@ -745,7 +724,6 @@
         </div>
 
       </div>
-
     </div>
   </section>
 
@@ -801,7 +779,7 @@
   </section>
 
   <!-- ================= CONTACT & PRIVATE INQUIRY ================= -->
-  <section id="contact" class="py-24 max-w-7xl mx-auto px-6">
+  <section id="contact" class="py-24 max-w-7xl mx-auto px-6 border-t border-white/5 bg-surface/20">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       
       <!-- Contact Info -->
@@ -901,17 +879,7 @@
             Submit Private Inquiry
           </button>
         </form>
-
-        <!-- Toast Feedback Notification -->
-        <div id="formToast" class="hidden absolute top-6 right-6 left-6 p-4 rounded-xl bg-emerald-950 border border-emerald-500/50 text-emerald-200 text-xs flex items-center gap-3 shadow-2xl transition">
-          <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-          <div>
-            <span class="font-bold">Message Transmitted Successfully!</span>
-            <p class="text-[11px] text-emerald-300">Marci Metzger has received your consultation request and will reach out promptly.</p>
-          </div>
-        </div>
       </div>
-
     </div>
   </section>
 
@@ -923,12 +891,12 @@
       </button>
 
       <span class="text-[10px] uppercase tracking-[0.25em] text-gold font-semibold">Property Dossier</span>
-      <h3 id="modalTitle" class="font-serif text-3xl text-white font-normal mt-1">4751 W Adkisson Street</h3>
-      <div id="modalPrice" class="text-gold font-serif text-2xl font-semibold mt-1">$1,850,000</div>
-      <div id="modalSpecs" class="text-xs uppercase tracking-wider text-stone-400 mt-2">4 Beds • 5 Baths • 5,530 SqFt</div>
+      <h3 id="modalTitle" class="font-serif text-3xl text-white font-normal mt-1">Property Name</h3>
+      <div id="modalPrice" class="text-gold font-serif text-2xl font-semibold mt-1">$0</div>
+      <div id="modalSpecs" class="text-xs uppercase tracking-wider text-stone-400 mt-2">Beds • Baths</div>
       
       <p id="modalDesc" class="text-sm text-stone-300 font-light mt-5 leading-relaxed border-t border-white/10 pt-4">
-        Custom luxury desert estate featuring an entertainer courtyard, gourmet kitchen, resort pool, and 4-car garage. Over an acre of private grounds with panoramic Spring Mountain views.
+        Description
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
@@ -948,9 +916,14 @@
       <i data-lucide="x" class="w-6 h-6"></i>
     </button>
     <div class="relative w-full max-w-6xl max-h-[90vh] p-4 flex justify-center items-center">
-      <!-- Image gets injected here via JS -->
       <img id="lightboxImage" src="" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl scale-95 transition-transform duration-500" alt="Fullscreen Gallery View">
     </div>
+  </div>
+
+  <!-- ================= GLOBAL CUSTOM TOAST NOTIFICATION ================= -->
+  <div id="globalToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] hidden px-6 py-4 rounded-xl bg-emerald-950/90 backdrop-blur-md border border-emerald-500/50 text-emerald-100 text-sm shadow-2xl flex items-center gap-3 transition-opacity duration-300 opacity-0">
+    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+    <span id="globalToastMessage" class="font-medium tracking-wide"></span>
   </div>
 
   <!-- ================= LUXURY FOOTER ================= -->
@@ -973,7 +946,7 @@
         </p>
       </div>
 
-      <!-- Col 2: Navigation (Synced exactly to Side Drawer) -->
+      <!-- Col 2: Navigation -->
       <div>
         <h4 class="text-white uppercase tracking-widest font-semibold text-xs mb-4">Navigation</h4>
         <ul class="space-y-2.5 text-stone-400">
@@ -1223,7 +1196,29 @@
     });
     updateMortgage();
 
-    // 6. Property Modal View
+    // 6. Custom Global Toast System (Replaces ugly alerts)
+    function showGlobalToast(message) {
+      const toast = document.getElementById('globalToast');
+      const toastMsg = document.getElementById('globalToastMessage');
+      
+      toastMsg.textContent = message;
+      toast.classList.remove('hidden');
+      
+      // Delay opacity transition so display block renders first
+      setTimeout(() => {
+        toast.classList.remove('opacity-0');
+        toast.classList.add('opacity-100');
+      }, 10);
+      
+      // Hide after 3.5 seconds
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 3500);
+    }
+
+    // 7. Property Modal View
     const propertyModal = document.getElementById('propertyModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalPrice = document.getElementById('modalPrice');
@@ -1242,40 +1237,33 @@
       propertyModal.classList.add('hidden');
     }
 
-    // 7. Bookmark Favorite Micro-interaction
+    // 8. Bookmark Favorite Micro-interaction
     function toggleBookmark(btn) {
-      const icon = btn.querySelector('svg');
       btn.classList.toggle('text-rose-500');
       btn.classList.toggle('scale-125');
       setTimeout(() => btn.classList.remove('scale-125'), 200);
     }
 
-    // 8. Contact Form Handling
+    // 9. Contact Form Handling
     const contactForm = document.getElementById('contactForm');
-    const formToast = document.getElementById('formToast');
-
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      formToast.classList.remove('hidden');
+      showGlobalToast('Message Transmitted Successfully! Marci Metzger will reach out promptly.');
       contactForm.reset();
-      setTimeout(() => {
-        formToast.classList.add('hidden');
-      }, 5000);
     });
 
-    // 9. Fullscreen Image Lightbox
+    // 10. Fullscreen Image Lightbox
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImage = document.getElementById('lightboxImage');
 
     function openLightbox(primarySrc, fallbackSrc) {
       document.body.style.overflow = 'hidden'; // stop background scrolling
       
-      // Try local webp first, if error (not found), use the unsplash fallback
+      // Try local image first, if error (not found), use the unsplash fallback
       lightboxImage.src = primarySrc;
       lightboxImage.onerror = () => { lightboxImage.src = fallbackSrc; };
       
       lightboxModal.classList.remove('hidden');
-      // small delay to allow display:block to render before transitioning opacity
       setTimeout(() => {
         lightboxModal.classList.remove('opacity-0');
         lightboxImage.classList.remove('scale-95');
