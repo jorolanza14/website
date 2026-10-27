@@ -45,13 +45,18 @@
               '50%': { transform: 'translateY(-8px)' }
             },
             pulseGlow: {
-              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-              '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+              '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+              '50%': { opacity: '0.6', transform: 'scale(1.05)' }
+            },
+            spinSlow: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
             }
           },
           animation: {
             float: 'float 5s ease-in-out infinite',
-            pulseGlow: 'pulseGlow 6s ease-in-out infinite'
+            pulseGlow: 'pulseGlow 8s ease-in-out infinite',
+            spinSlow: 'spinSlow 30s linear infinite'
           }
         }
       }
@@ -144,14 +149,21 @@
     }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-    /* Grain Overlay */
-    .grain-bg {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
-      background-size: 28px 28px;
+    /* Grain & Architectural Pattern Overlays */
+    .arch-grid {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 4rem 4rem;
     }
   </style>
 </head>
 <body class="bg-obsidian text-stone-200 selection:bg-gold selection:text-black min-h-screen relative overflow-x-hidden">
+
+  <!-- SVG Film Grain Overlay (makes the black background feel like premium matte material) -->
+  <div class="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-[0.025]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.7%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-gold via-gold-light to-gold z-[10001] w-0 shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-75 ease-out"></div>
 
   <!-- Cinematic Preloader -->
   <div id="preloader" class="fixed inset-0 z-[10000] bg-obsidian flex flex-col items-center justify-center">
@@ -164,9 +176,9 @@
   <!-- Interactive Glowing Cursor -->
   <div id="cursorGlow" class="hidden md:block"></div>
 
-  <!-- Ambient Cinematic Spotlights -->
-  <div class="fixed top-0 left-1/4 w-[700px] h-[700px] bg-gold/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulseGlow"></div>
-  <div class="fixed bottom-0 right-10 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+  <!-- Top Ambient Spotlights -->
+  <div class="fixed top-[-10%] left-[-10%] w-[700px] h-[700px] bg-gold/10 rounded-full blur-[140px] pointer-events-none z-0 animate-pulseGlow"></div>
+  <div class="fixed top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[150px] pointer-events-none z-0 animate-spinSlow"></div>
 
   <!-- ================= LUXURY NAVIGATION (Minimalist & Dynamic Island) ================= -->
   <nav id="navbar" class="fixed top-0 left-1/2 -translate-x-1/2 w-full z-[100] bg-transparent transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-b border-transparent">
@@ -174,8 +186,9 @@
       
       <!-- Minimalist Logo Branding -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:border-gold transition duration-500 shadow-lg">
-          <span class="font-serif text-xl font-bold text-white group-hover:text-gold transition">M</span>
+        <div class="w-11 h-11 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:border-gold transition duration-500 shadow-lg relative overflow-hidden">
+          <div class="absolute inset-0 bg-gold/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          <span class="font-serif text-xl font-bold text-white group-hover:text-gold transition relative z-10">M</span>
         </div>
         <div class="flex flex-col drop-shadow-md hidden sm:flex">
           <span class="font-serif text-2xl tracking-[0.18em] font-light text-white transition duration-300">MARCI METZGER</span>
@@ -423,6 +436,7 @@
   <!-- ================= AFFILIATIONS / LOGOS BAND ================= -->
   <section class="pb-8 pt-4 border-b border-white/5 bg-obsidian relative z-20 overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-10 sm:gap-20">
+      <!-- Invert, grayscale, opacity applied to make white background logos blend seamlessly into dark mode -->
       <img src="logo1.webp" alt="The Ridge Realty Group" class="reveal delay-100 h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=The+Ridge'; this.className='reveal delay-100 h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
       <img src="logo2.webp" alt="Equal Housing Opportunity" class="reveal delay-200 h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=Equal+Housing'; this.className='reveal delay-200 h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
       <img src="logo3.webp" alt="REALTOR" class="reveal delay-300 h-10 sm:h-14 object-contain invert grayscale opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-pointer" onerror="this.src='https://placehold.co/200x80/08090B/D4AF37?text=REALTOR'; this.className='reveal delay-300 h-10 sm:h-14 opacity-50 hover:opacity-100 transition duration-500';" />
@@ -431,7 +445,7 @@
   </section>
 
   <!-- ================= GET IT SOLD / EXPERTISE SECTION ================= -->
-  <section id="expertise" class="py-24 max-w-7xl mx-auto px-6 relative">
+  <section id="expertise" class="py-24 max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center max-w-2xl mx-auto mb-20 reveal">
       <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
         <i data-lucide="award" class="w-4 h-4"></i> Proven Excellence
@@ -494,178 +508,183 @@
   </section>
 
   <!-- ================= PROPERTY SHOWCASE GRID ================= -->
-  <section id="listings" class="py-24 max-w-7xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 reveal">
-      <div>
-        <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Curated Collections
-        </span>
-        <h2 class="font-serif text-3xl sm:text-5xl text-white font-normal mt-2">Current Active Portfolio</h2>
+  <section id="listings" class="py-24 relative arch-grid border-t border-white/5">
+    <!-- Mid-page Ambient Spotlight -->
+    <div class="absolute top-[20%] left-[-10%] w-[800px] h-[800px] bg-gold/5 rounded-full blur-[160px] pointer-events-none z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 reveal">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Curated Collections
+          </span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-white font-normal mt-2">Current Active Portfolio</h2>
+        </div>
+        <p class="text-stone-400 text-sm max-w-md">
+          Private viewings, virtual fly-throughs, and off-market confidential inventory arranged upon request.
+        </p>
       </div>
-      <p class="text-stone-400 text-sm max-w-md">
-        Private viewings, virtual fly-throughs, and off-market confidential inventory arranged upon request.
-      </p>
-    </div>
 
-    <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Property 1 -->
-      <article class="property-card reveal delay-100 group rounded-[2rem] overflow-hidden glass-panel border-white/10 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="listing1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop'" alt="3750 Las Vegas Boulevard #4303" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
-          
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30 shadow-lg">
-              Active Listing
-            </span>
-          </div>
+      <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Property 1 -->
+        <article class="property-card reveal delay-100 group rounded-[2rem] overflow-hidden glass-panel border-white/10 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="listing1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop'" alt="3750 Las Vegas Boulevard #4303" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
+            
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30 shadow-lg">
+                Active Listing
+              </span>
+            </div>
 
-          <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10 shadow-lg">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </button>
+            <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10 shadow-lg">
+              <i data-lucide="heart" class="w-4 h-4"></i>
+            </button>
 
-          <div class="absolute bottom-4 left-4">
-            <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$12,000,000</div>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between bg-surface-card">
-          <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">3750 Las Vegas Blvd #4303</h3>
-            <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89158
-            </p>
-
-            <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div class="border-r border-white/5">
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">2 Beds</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Status</span>
-                <span class="font-semibold text-emerald-400">Available</span>
-              </div>
+            <div class="absolute bottom-4 left-4">
+              <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
+              <div class="font-serif text-3xl text-white font-medium">$12,000,000</div>
             </div>
           </div>
 
-          <button onclick="openModal('3750 Las Vegas Blvd #4303', '$12,000,000', '2 Beds • Las Vegas Strip', 'Unrivaled penthouse luxury high above the Las Vegas Strip. Floor-to-ceiling windows offering spectacular panoramic views of the entire valley.')" class="w-full py-3.5 rounded-full border border-white/10 hover:border-gold hover:text-gold hover:bg-gold/5 text-xs uppercase tracking-widest font-semibold transition-all duration-300">
-            View Details & Gallery
-          </button>
-        </div>
-      </article>
+          <div class="p-6 flex-1 flex flex-col justify-between bg-surface-card">
+            <div>
+              <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">3750 Las Vegas Blvd #4303</h3>
+              <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89158
+              </p>
 
-      <!-- Property 2 -->
-      <article class="property-card reveal delay-200 group rounded-[2rem] overflow-hidden glass-panel border-white/10 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="listing2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900&auto=format&fit=crop'" alt="3750 Las Vegas Boulevard #4304" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
-          
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30 shadow-lg">
-              Active Listing
-            </span>
-          </div>
-
-          <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10 shadow-lg">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </button>
-
-          <div class="absolute bottom-4 left-4">
-            <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$9,000,000</div>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between bg-surface-card">
-          <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">3750 Las Vegas Blvd #4304</h3>
-            <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89158
-            </p>
-
-            <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div class="border-r border-white/5">
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">2 Beds</span>
+              <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
+                <div class="border-r border-white/5">
+                  <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
+                  <span class="font-semibold text-white">2 Beds</span>
+                </div>
+                <div>
+                  <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Status</span>
+                  <span class="font-semibold text-emerald-400">Available</span>
+                </div>
               </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
-                <span class="font-semibold text-white">3 Baths</span>
-              </div>
+            </div>
+
+            <button onclick="openModal('3750 Las Vegas Blvd #4303', '$12,000,000', '2 Beds • Las Vegas Strip', 'Unrivaled penthouse luxury high above the Las Vegas Strip. Floor-to-ceiling windows offering spectacular panoramic views of the entire valley.')" class="w-full py-3.5 rounded-full border border-white/10 hover:border-gold hover:text-gold hover:bg-gold/5 text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+              View Details & Gallery
+            </button>
+          </div>
+        </article>
+
+        <!-- Property 2 -->
+        <article class="property-card reveal delay-200 group rounded-[2rem] overflow-hidden glass-panel border-white/10 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="listing2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900&auto=format&fit=crop'" alt="3750 Las Vegas Boulevard #4304" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
+            
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30 shadow-lg">
+                Active Listing
+              </span>
+            </div>
+
+            <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10 shadow-lg">
+              <i data-lucide="heart" class="w-4 h-4"></i>
+            </button>
+
+            <div class="absolute bottom-4 left-4">
+              <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
+              <div class="font-serif text-3xl text-white font-medium">$9,000,000</div>
             </div>
           </div>
 
-          <button onclick="openModal('3750 Las Vegas Blvd #4304', '$9,000,000', '2 Beds • 3 Baths', 'Sophisticated evening entertaining space featuring custom dark stone finishes, modern lighting installations, and direct views of the iconic Strip neon.')" class="w-full py-3.5 rounded-full border border-white/10 hover:border-gold hover:text-gold hover:bg-gold/5 text-xs uppercase tracking-widest font-semibold transition-all duration-300">
-            View Details & Gallery
-          </button>
-        </div>
-      </article>
+          <div class="p-6 flex-1 flex flex-col justify-between bg-surface-card">
+            <div>
+              <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">3750 Las Vegas Blvd #4304</h3>
+              <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89158
+              </p>
 
-      <!-- Property 3 -->
-      <article class="property-card reveal delay-300 group rounded-[2rem] overflow-hidden glass-panel border-white/10 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="listing3.jpg" onerror="this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=900&auto=format&fit=crop'" alt="700 W Carson Avenue #3203" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
-          
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30 shadow-lg">
-              Active Listing
-            </span>
-          </div>
-
-          <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10 shadow-lg">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </button>
-
-          <div class="absolute bottom-4 left-4">
-            <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$8,433,600</div>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between bg-surface-card">
-          <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">700 W Carson Ave #3203</h3>
-            <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89106
-            </p>
-
-            <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div class="border-r border-white/5">
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">2 Beds</span>
+              <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
+                <div class="border-r border-white/5">
+                  <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
+                  <span class="font-semibold text-white">2 Beds</span>
+                </div>
+                <div>
+                  <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
+                  <span class="font-semibold text-white">3 Baths</span>
+                </div>
               </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
-                <span class="font-semibold text-white">3 Baths</span>
-              </div>
+            </div>
+
+            <button onclick="openModal('3750 Las Vegas Blvd #4304', '$9,000,000', '2 Beds • 3 Baths', 'Sophisticated evening entertaining space featuring custom dark stone finishes, modern lighting installations, and direct views of the iconic Strip neon.')" class="w-full py-3.5 rounded-full border border-white/10 hover:border-gold hover:text-gold hover:bg-gold/5 text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+              View Details & Gallery
+            </button>
+          </div>
+        </article>
+
+        <!-- Property 3 -->
+        <article class="property-card reveal delay-300 group rounded-[2rem] overflow-hidden glass-panel border-white/10 hover:border-gold/40 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="listing3.jpg" onerror="this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=900&auto=format&fit=crop'" alt="700 W Carson Avenue #3203" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
+            
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30 shadow-lg">
+                Active Listing
+              </span>
+            </div>
+
+            <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10 shadow-lg">
+              <i data-lucide="heart" class="w-4 h-4"></i>
+            </button>
+
+            <div class="absolute bottom-4 left-4">
+              <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
+              <div class="font-serif text-3xl text-white font-medium">$8,433,600</div>
             </div>
           </div>
 
-          <button onclick="openModal('700 W Carson Ave #3203', '$8,433,600', '2 Beds • 3 Baths', 'Stunning architectural masterpiece offering unmatched urban luxury, resort-style amenities, and lush palm-lined grounds in the heart of the city.')" class="w-full py-3.5 rounded-full border border-white/10 hover:border-gold hover:text-gold hover:bg-gold/5 text-xs uppercase tracking-widest font-semibold transition-all duration-300">
-            View Details & Gallery
-          </button>
-        </div>
-      </article>
+          <div class="p-6 flex-1 flex flex-col justify-between bg-surface-card">
+            <div>
+              <h3 class="font-medium text-lg text-white group-hover:text-gold transition line-clamp-1">700 W Carson Ave #3203</h3>
+              <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Las Vegas, NV 89106
+              </p>
 
-    </div>
+              <div class="grid grid-cols-2 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
+                <div class="border-r border-white/5">
+                  <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
+                  <span class="font-semibold text-white">2 Beds</span>
+                </div>
+                <div>
+                  <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
+                  <span class="font-semibold text-white">3 Baths</span>
+                </div>
+              </div>
+            </div>
 
-    <!-- "View More" Button -->
-    <div class="mt-14 text-center reveal delay-100">
-      <button onclick="showGlobalToast('Loading full property portfolio from MLS...')" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs uppercase tracking-[0.2em] backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
-        View Entire Portfolio <i data-lucide="arrow-right" class="w-4 h-4 text-gold"></i>
-      </button>
+            <button onclick="openModal('700 W Carson Ave #3203', '$8,433,600', '2 Beds • 3 Baths', 'Stunning architectural masterpiece offering unmatched urban luxury, resort-style amenities, and lush palm-lined grounds in the heart of the city.')" class="w-full py-3.5 rounded-full border border-white/10 hover:border-gold hover:text-gold hover:bg-gold/5 text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+              View Details & Gallery
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- "View More" Button -->
+      <div class="mt-14 text-center reveal delay-100">
+        <button onclick="showGlobalToast('Loading full property portfolio from MLS...')" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs uppercase tracking-[0.2em] backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+          View Entire Portfolio <i data-lucide="arrow-right" class="w-4 h-4 text-gold"></i>
+        </button>
+      </div>
     </div>
   </section>
 
   <!-- ================= LUXURY PHOTO GALLERY (BENTO GRID) ================= -->
   <section id="gallery" class="py-24 bg-obsidian relative border-t border-white/5">
     <!-- Background atmospheric glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
     
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="text-center max-w-2xl mx-auto mb-16 reveal">
         <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
           <i data-lucide="camera" class="w-4 h-4"></i> Visual Portfolio
@@ -749,7 +768,7 @@
   </section>
 
   <!-- ================= ABOUT THE BROKER & IN HER WORDS ================= -->
-  <section id="about" class="py-24 bg-surface/40 border-y border-white/5 relative grain-bg">
+  <section id="about" class="py-24 bg-surface/40 border-y border-white/5 relative">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
       
       <!-- Portrait Card -->
@@ -901,53 +920,58 @@
   </section>
 
   <!-- ================= COMPREHENSIVE SERVICES ================= -->
-  <section id="services" class="py-24 max-w-7xl mx-auto px-6 relative z-20">
-    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-      <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
-        <i data-lucide="briefcase" class="w-4 h-4"></i> Client Dedication
-      </span>
-      <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 tracking-wide">Comprehensive Service</h2>
-      <div class="w-16 h-[1px] bg-gold/50 mx-auto mt-6"></div>
-    </div>
+  <section id="services" class="py-24 relative arch-grid border-t border-white/5 z-20">
+    <!-- Mid-page Ambient Spotlight -->
+    <div class="absolute top-[30%] right-[-10%] w-[700px] h-[700px] bg-blue-900/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Card 1 -->
-      <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 hover:-translate-y-2 transition-all duration-500 group flex flex-col reveal delay-100 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)]">
-        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
-          <img src="service1.webp" onerror="this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Real Estate Done Right">
-          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
-        </div>
-        <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Real Estate Done Right</h3>
-        <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
-          Nervous about your property adventure? Don't be. Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!
-        </p>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
+          <i data-lucide="briefcase" class="w-4 h-4"></i> Client Dedication
+        </span>
+        <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 tracking-wide">Comprehensive Service</h2>
+        <div class="w-16 h-[1px] bg-gold/50 mx-auto mt-6"></div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 hover:-translate-y-2 transition-all duration-500 group flex flex-col reveal delay-200 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)]">
-        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
-          <img src="service2.webp" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Commercial & Residential">
-          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 hover:-translate-y-2 transition-all duration-500 group flex flex-col reveal delay-100 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)]">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+            <img src="service1.webp" onerror="this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Real Estate Done Right">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+          </div>
+          <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Real Estate Done Right</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
+            Nervous about your property adventure? Don't be. Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!
+          </p>
         </div>
-        <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Commercial & Residential</h3>
-        <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
-          Large or small, condo or mansion, we can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put your hard-earned dollars.
-        </p>
-      </div>
 
-      <!-- Card 3 -->
-      <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 hover:-translate-y-2 transition-all duration-500 group flex flex-col reveal delay-300 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)]">
-        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
-          <img src="service3.webp" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Rely on Expertise">
-          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+        <!-- Card 2 -->
+        <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 hover:-translate-y-2 transition-all duration-500 group flex flex-col reveal delay-200 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)]">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+            <img src="service2.webp" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Commercial & Residential">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+          </div>
+          <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Commercial & Residential</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
+            Large or small, condo or mansion, we can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put your hard-earned dollars.
+          </p>
         </div>
-        <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Rely on Expertise</h3>
-        <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
-          If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.
-        </p>
-      </div>
 
+        <!-- Card 3 -->
+        <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 hover:-translate-y-2 transition-all duration-500 group flex flex-col reveal delay-300 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.15)]">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+            <img src="service3.webp" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Rely on Expertise">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+          </div>
+          <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Rely on Expertise</h3>
+          <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
+            If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -963,7 +987,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
       <!-- Review 1 -->
-      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-100 flex flex-col justify-between">
+      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-100 flex flex-col justify-between hover:-translate-y-1 shadow-lg">
         <div>
           <div class="flex gap-1 text-gold mb-4">
             <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -977,7 +1001,7 @@
       </div>
 
       <!-- Review 2 -->
-      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-200 flex flex-col justify-between">
+      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-200 flex flex-col justify-between hover:-translate-y-1 shadow-lg">
         <div>
           <div class="flex gap-1 text-gold mb-4">
             <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -991,7 +1015,7 @@
       </div>
 
       <!-- Review 3 -->
-      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-300 flex flex-col justify-between">
+      <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-gold/30 transition-all duration-300 reveal delay-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg">
         <div>
           <div class="flex gap-1 text-gold mb-4">
             <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -1008,7 +1032,7 @@
   </section>
 
   <!-- ================= CONTACT & PRIVATE INQUIRY ================= -->
-  <section id="contact" class="py-24 max-w-7xl mx-auto px-6 border-t border-white/5 bg-surface/20">
+  <section id="contact" class="py-24 max-w-7xl mx-auto px-6 border-t border-white/5 bg-surface/20 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       
       <!-- Contact Info -->
@@ -1181,7 +1205,7 @@
   </button>
 
   <!-- ================= LUXURY FOOTER ================= -->
-  <footer class="border-t border-white/10 bg-[#060708] py-16 text-stone-400 text-xs">
+  <footer class="border-t border-white/10 bg-[#060708] py-16 text-stone-400 text-xs relative z-10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 reveal">
       
       <!-- Col 1 -->
@@ -1281,6 +1305,7 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          // Optional: remove unobserve if you want elements to animate every time you scroll past them
           revealObserver.unobserve(entry.target); 
         }
       });
@@ -1357,9 +1382,17 @@
     const navbar = document.getElementById('navbar');
     const navInner = document.getElementById('navInner');
     const bttBtn = document.getElementById('backToTopBtn');
+    const scrollProgressBar = document.getElementById('scrollProgress');
 
-    // Nav Scroll Effect (Dynamic Island & Back to Top)
+    // Nav Scroll Effect (Dynamic Island, Back to Top, and Scroll Progress)
     window.addEventListener('scroll', () => {
+      
+      // Scroll Progress Bar Logic
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      scrollProgressBar.style.width = scrolled + '%';
+
       // Dynamic Island Logic
       if (window.scrollY > 50) {
         navbar.classList.remove('top-0', 'w-full', 'bg-transparent', 'border-transparent', 'border-b');
