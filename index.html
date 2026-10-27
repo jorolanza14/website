@@ -298,7 +298,6 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1">
           <div class="aspect-video overflow-hidden">
-            <!-- Looks for 1.webp locally, falls back to a placeholder if not found yet -->
             <img src="1.webp" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop'" alt="Kitchen interior" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
           </div>
           <div class="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-3xl transition duration-500 pointer-events-none"></div>
@@ -321,7 +320,6 @@
         </div>
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1 lg:order-2">
           <div class="aspect-video overflow-hidden">
-            <!-- Looks for 2.webp locally, falls back to a placeholder if not found yet -->
             <img src="2.webp" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop'" alt="Luxury pool house" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
           </div>
           <div class="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-3xl transition duration-500 pointer-events-none"></div>
@@ -332,7 +330,6 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group order-1">
           <div class="aspect-video overflow-hidden">
-            <!-- Looks for 3.webp locally, falls back to a placeholder if not found yet -->
             <img src="3.webp" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=900&auto=format&fit=crop'" alt="House keys" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
           </div>
           <div class="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-3xl transition duration-500 pointer-events-none"></div>
@@ -362,11 +359,10 @@
       </p>
     </div>
 
-    <!-- The Property Cards Container -->
     <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       
       <!-- Property 1 -->
-      <article data-category="luxury-estates" data-price="1850000" data-beds="4" class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
+      <article class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
         <div class="relative aspect-[4/3] overflow-hidden">
           <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=900&auto=format&fit=crop" alt="4751 W Adkisson Street" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
@@ -417,7 +413,7 @@
       </article>
 
       <!-- Property 2 -->
-      <article data-category="mountain-falls" data-price="1300000" data-beds="3" class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
+      <article class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
         <div class="relative aspect-[4/3] overflow-hidden">
           <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop" alt="2221 W Windsong Lane" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
@@ -468,7 +464,7 @@
       </article>
 
       <!-- Property 3 -->
-      <article data-category="luxury-estates" data-price="1275000" data-beds="3" class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
+      <article class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
         <div class="relative aspect-[4/3] overflow-hidden">
           <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900&auto=format&fit=crop" alt="4190 N Equus Court" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
@@ -518,159 +514,6 @@
         </div>
       </article>
 
-      <!-- Property 4 -->
-      <article data-category="mountain-falls" data-price="680000" data-beds="4" class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop" alt="531 Ironwood Pines Way" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
-          
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-emerald-400 border border-emerald-400/30">
-              Just Listed
-            </span>
-          </div>
-
-          <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </button>
-
-          <div class="absolute bottom-4 left-4">
-            <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$680,000</div>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition">531 Ironwood Pines Way</h3>
-            <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Mountain Falls, NV 89061
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Beds</span>
-                <span class="font-semibold text-white">4 Beds</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Baths</span>
-                <span class="font-semibold text-white">3 Baths</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Area</span>
-                <span class="font-semibold text-white">2,810 SqFt</span>
-              </div>
-            </div>
-          </div>
-
-          <button onclick="openModal('531 Ironwood Pines Way', '$680,000', '4 Beds • 3 Baths • 2,810 SqFt', 'Single-story modern open layout backing directly to the community walking trails. Designer quartz island, upgraded thermal windows, and full HOA amenities.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
-            View Details & Virtual Tour
-          </button>
-        </div>
-      </article>
-
-      <!-- Property 5: Land / Commercial -->
-      <article data-category="land-acreage" data-price="495000" data-beds="0" class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=900&auto=format&fit=crop" alt="Highway 160 Commercial Parcel" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
-          
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-sky-400 border border-sky-400/30">
-              Commercial / Land
-            </span>
-          </div>
-
-          <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </button>
-
-          <div class="absolute bottom-4 left-4">
-            <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$495,000</div>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition">HWY-160 Prime Commercial Parcel</h3>
-            <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Pahrump Highway Frontage
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Zoning</span>
-                <span class="font-semibold text-white">General Comm</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Utilities</span>
-                <span class="font-semibold text-white">At Street</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Size</span>
-                <span class="font-semibold text-white">4.8 Acres</span>
-              </div>
-            </div>
-          </div>
-
-          <button onclick="openModal('HWY-160 Prime Commercial Parcel', '$495,000', 'Commercial • 4.8 Acres • High Traffic', 'High-visibility corridor parcel suited for retail center, self-storage, or commercial showroom. Excellent ingress/egress off Highway 160.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
-            View Details & Survey
-          </button>
-        </div>
-      </article>
-
-      <!-- Property 6 -->
-      <article data-category="land-acreage" data-price="290000" data-beds="0" class="property-card group rounded-3xl overflow-hidden glass-panel border-white/10 hover:border-gold/40 transition duration-500 flex flex-col">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=900&auto=format&fit=crop" alt="Mount Charleston View Estate Lots" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-black/30"></div>
-          
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-gold border border-gold/30">
-              Acreage
-            </span>
-          </div>
-
-          <button onclick="toggleBookmark(this)" aria-label="Save Property" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:text-rose-500 transition border border-white/10">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </button>
-
-          <div class="absolute bottom-4 left-4">
-            <div class="text-xs uppercase tracking-widest text-stone-400">Offered At</div>
-            <div class="font-serif text-3xl text-white font-medium">$290,000</div>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-medium text-lg text-white group-hover:text-gold transition">Desert Foothills Custom Lot</h3>
-            <p class="text-xs text-stone-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> East Pahrump Valley
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 my-5 py-3 border-y border-white/5 text-xs text-stone-300 text-center">
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Zoning</span>
-                <span class="font-semibold text-white">Residential</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Well/Septic</span>
-                <span class="font-semibold text-white">Permitted</span>
-              </div>
-              <div>
-                <span class="text-stone-400 block text-[10px] uppercase tracking-wider">Size</span>
-                <span class="font-semibold text-white">2.5 Acres</span>
-              </div>
-            </div>
-          </div>
-
-          <button onclick="openModal('Desert Foothills Custom Lot', '$290,000', 'Residential Acreage • 2.5 Acres', 'Build your dream desert compound with unhindered night sky views and proximity to both Vegas and Death Valley recreation.')" class="w-full py-3 rounded-xl border border-white/10 hover:border-gold hover:text-gold text-xs uppercase tracking-widest font-semibold transition duration-300">
-            View Details & Survey
-          </button>
-        </div>
-      </article>
-
     </div>
   </section>
 
@@ -681,14 +524,14 @@
     
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal tracking-wide uppercase tracking-widest">Photo Gallery</h2>
-        <div class="w-16 h-[1px] bg-gold/50 mx-auto mt-6"></div>
+        <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 tracking-wide uppercase">Photo Gallery</h2>
+        <div class="w-24 h-[1px] bg-gold/30 mx-auto mt-6"></div>
       </div>
       
       <!-- Asymmetric Editorial Grid (7 Images) -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] sm:auto-rows-[200px] md:auto-rows-[250px]">
         
-        <!-- Image 1: Large Feature (Spans 2 columns, 2 rows) -->
+        <!-- Image 1: Large Feature -->
         <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-2xl" onclick="openLightbox('gallery1.webp', 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop')">
           <img src="gallery1.webp" onerror="this.src='https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery feature" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -699,7 +542,7 @@
           </div>
         </div>
 
-        <!-- Image 2: Standard Square -->
+        <!-- Image 2 -->
         <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery2.webp', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop')">
           <img src="gallery2.webp" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 2" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -708,7 +551,7 @@
           </div>
         </div>
 
-        <!-- Image 3: Tall Portrait (Spans 1 column, 2 rows) -->
+        <!-- Image 3 -->
         <div class="col-span-1 row-span-2 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-2xl" onclick="openLightbox('gallery3.webp', 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop')">
           <img src="gallery3.webp" onerror="this.src='https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 3" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -717,7 +560,7 @@
           </div>
         </div>
 
-        <!-- Image 4: Standard Square -->
+        <!-- Image 4 -->
         <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery4.webp', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop')">
           <img src="gallery4.webp" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 4" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -726,7 +569,7 @@
           </div>
         </div>
 
-        <!-- Image 5: Standard Square -->
+        <!-- Image 5 -->
         <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery5.webp', 'https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=800&auto=format&fit=crop')">
           <img src="gallery5.webp" onerror="this.src='https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 5" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -735,7 +578,7 @@
           </div>
         </div>
 
-        <!-- Image 6: Standard Square -->
+        <!-- Image 6 -->
         <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-xl" onclick="openLightbox('gallery6.webp', 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=800&auto=format&fit=crop')">
           <img src="gallery6.webp" onerror="this.src='https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 6" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -744,7 +587,7 @@
           </div>
         </div>
 
-        <!-- Image 7: Wide Landscape (Spans 2 columns, 1 row) -->
+        <!-- Image 7: Wide Landscape -->
         <div class="col-span-2 row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer glass-panel border border-white/10 shadow-2xl" onclick="openLightbox('gallery7.webp', 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop')">
           <img src="gallery7.webp" onerror="this.src='https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Gallery image 7" />
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500"></div>
@@ -901,6 +744,57 @@
           </a>
         </div>
 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMPREHENSIVE SERVICES ================= -->
+  <section id="services" class="py-24 max-w-7xl mx-auto px-6 relative z-20">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold flex justify-center items-center gap-2">
+        <i data-lucide="briefcase" class="w-4 h-4"></i> Client Dedication
+      </span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 tracking-wide">Comprehensive Service</h2>
+      <div class="w-16 h-[1px] bg-gold/50 mx-auto mt-6"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Card 1 -->
+      <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 transition duration-500 group flex flex-col">
+        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+          <img src="service1.webp" onerror="this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Real Estate Done Right">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+        </div>
+        <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Real Estate Done Right</h3>
+        <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
+          Nervous about your property adventure? Don't be. Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 transition duration-500 group flex flex-col">
+        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+          <img src="service2.webp" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Commercial & Residential">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+        </div>
+        <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Commercial & Residential</h3>
+        <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
+          Large or small, condo or mansion, we can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put your hard-earned dollars.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-panel p-6 rounded-3xl border border-white/10 hover:border-gold/40 transition duration-500 group flex flex-col">
+        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+          <img src="service3.webp" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" alt="Rely on Expertise">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+        </div>
+        <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-gold transition duration-300">Rely on Expertise</h3>
+        <p class="text-stone-400 text-sm font-light leading-relaxed flex-1">
+          If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.
+        </p>
       </div>
 
     </div>
