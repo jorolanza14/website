@@ -1364,6 +1364,10 @@
         setTimeout(() => {
           navLogo.classList.remove('opacity-0');
           preloader.remove(); 
+          
+          // NEW: Trigger the elegant reveal of the Hero Headline and Search Dashboard!
+          document.getElementById('heroHeadline').classList.remove('opacity-0', 'translate-y-10');
+          document.getElementById('advancedSearchContainer').classList.remove('opacity-0', 'translate-y-10');
         }, 1000);
         
       }, 600); // Initial screen hold delay
@@ -1407,12 +1411,22 @@
       sideDrawer.classList.remove('translate-x-full');
       drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
       document.body.style.overflow = 'hidden'; 
+      
+      // NEW: Staggered animation for menu links
+      document.querySelectorAll('.drawer-link-anim').forEach((link, idx) => {
+        setTimeout(() => link.classList.add('show'), 150 + (idx * 100));
+      });
     }
     
     function closeMenu() {
       sideDrawer.classList.add('translate-x-full');
       drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
       document.body.style.overflow = '';
+      
+      // NEW: Hide links when menu closes so they can animate again next time
+      document.querySelectorAll('.drawer-link-anim').forEach(link => {
+        link.classList.remove('show');
+      });
     }
 
     menuToggleBtn.addEventListener('click', openMenu);
