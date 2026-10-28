@@ -193,7 +193,7 @@
 </head>
 <body class="bg-obsidian text-stone-200 selection:bg-gold selection:text-black min-h-screen relative overflow-x-hidden">
 
-  <!-- SVG Film Grain Overlay -->
+  <!-- SVG Film Grain Overlay (makes the black background feel like premium matte material) -->
   <div class="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-[0.025]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.7%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
 
   <!-- Top Scroll Progress Bar -->
@@ -220,6 +220,7 @@
       
       <!-- Minimalist Logo Branding -->
       <a href="#" class="flex items-center gap-3 group">
+        <!-- opacity-0 initially for the FLIP animation from preloader -->
         <div id="navLogoCircle" class="w-11 h-11 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:border-gold transition duration-500 shadow-lg relative overflow-hidden opacity-0">
           <div class="absolute inset-0 bg-gold/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
           <span class="font-serif text-xl font-bold text-white group-hover:text-gold transition relative z-10">M</span>
@@ -704,9 +705,9 @@
 
       </div>
 
-      <!-- "View More" Button (With Shine Effect) -->
+      <!-- "View More" Button (With Shine Effect & Demo Notice) -->
       <div class="mt-14 text-center reveal delay-100">
-        <button onclick="showGlobalToast('Loading full property portfolio from MLS...')" class="shine-effect inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs uppercase tracking-[0.2em] backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+        <button onclick="showGlobalToast('Demo Notice: Full portfolio routing is outside the scope of this homepage assessment.')" class="shine-effect inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs uppercase tracking-[0.2em] backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
           View Entire Portfolio <i data-lucide="arrow-right" class="w-4 h-4 text-gold"></i>
         </button>
       </div>
@@ -1207,7 +1208,7 @@
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="#contact" onclick="closeModal()" class="shine-effect flex-1 py-3.5 rounded-full bg-gold text-black font-semibold text-xs uppercase tracking-widest text-center hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+        <a href="#contact" onclick="closeModal()" class="flex-1 py-3.5 rounded-full bg-gold text-black font-semibold text-xs uppercase tracking-widest text-center hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
           Schedule Private Tour
         </a>
         <button onclick="closeModal()" class="px-6 py-3.5 rounded-full border border-white/10 text-stone-300 hover:text-white hover:bg-white/5 text-xs uppercase tracking-widest font-medium transition-all duration-300">
@@ -1227,9 +1228,9 @@
     </div>
   </div>
 
-  <!-- ================= GLOBAL CUSTOM TOAST NOTIFICATION ================= -->
-  <div id="globalToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] hidden px-6 py-4 rounded-full bg-emerald-950/90 backdrop-blur-xl border border-emerald-500/50 text-emerald-100 text-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-3 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] opacity-0 translate-y-10">
-    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+  <!-- ================= GLOBAL CUSTOM TOAST NOTIFICATION (Demo Notice Style) ================= -->
+  <div id="globalToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] hidden px-6 py-4 rounded-full bg-[#16191F]/95 backdrop-blur-xl border border-gold/30 text-stone-200 text-sm shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex items-center gap-3 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] opacity-0 translate-y-10">
+    <i id="toastIcon" data-lucide="info" class="w-5 h-5 text-gold shrink-0"></i>
     <span id="globalToastMessage" class="font-medium tracking-wide"></span>
   </div>
 
@@ -1319,7 +1320,7 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // 0. Cinematic Preloader to Navbar Logo Animation (Hero FLIP) & Sequential Reveal
+    // 0. Cinematic Preloader to Navbar Logo Animation (Hero FLIP)
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       const preloaderLogo = document.getElementById('preloaderLogoCircle');
@@ -1327,9 +1328,6 @@
       const navLogo = document.getElementById('navLogoCircle');
       const navText = document.getElementById('navTextBrand');
       const mText = preloaderLogo.querySelector('span');
-      
-      const heroHeadline = document.getElementById('heroHeadline');
-      const advancedSearchContainer = document.getElementById('advancedSearchContainer');
 
       setTimeout(() => {
         // Fade out background & text
@@ -1362,17 +1360,10 @@
           navText.classList.remove('opacity-0');
         }, 500);
         
-        // Reveal true nav logo, trigger sequential hero reveals, and destroy preloader element
+        // Reveal true nav logo and destroy preloader element
         setTimeout(() => {
           navLogo.classList.remove('opacity-0');
           preloader.remove(); 
-          
-          // Sequential Hero Element Fade Up
-          heroHeadline.classList.remove('opacity-0', 'translate-y-10');
-          setTimeout(() => {
-             advancedSearchContainer.classList.remove('opacity-0', 'translate-y-10');
-          }, 300);
-
         }, 1000);
         
       }, 600); // Initial screen hold delay
@@ -1406,44 +1397,33 @@
       cursorGlow.style.top = `${e.clientY}px`;
     });
 
-    // 4. Elegant Side Drawer Navigation (With Staggered Links)
+    // 4. Elegant Side Drawer Navigation
     const menuToggleBtn = document.getElementById('menuToggleBtn');
     const menuCloseBtn = document.getElementById('menuCloseBtn');
     const sideDrawer = document.getElementById('sideDrawer');
     const drawerBackdrop = document.getElementById('drawerBackdrop');
-    const drawerLinks = document.querySelectorAll('.drawer-link-anim');
     
     function openMenu() {
       sideDrawer.classList.remove('translate-x-full');
       drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
       document.body.style.overflow = 'hidden'; 
-      
-      // Staggered Link reveal
-      drawerLinks.forEach((link, index) => {
-        setTimeout(() => {
-          link.classList.add('show');
-        }, 300 + (index * 100)); // wait 300ms for drawer to open, then stagger by 100ms
-      });
     }
     
     function closeMenu() {
       sideDrawer.classList.add('translate-x-full');
       drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
       document.body.style.overflow = '';
-      
-      // Hide links instantly for the next time it opens
-      drawerLinks.forEach(link => link.classList.remove('show'));
     }
 
     menuToggleBtn.addEventListener('click', openMenu);
     menuCloseBtn.addEventListener('click', closeMenu);
     drawerBackdrop.addEventListener('click', closeMenu);
 
-    drawerLinks.forEach(link => {
+    document.querySelectorAll('.drawer-link').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 
-    // 5. Hero Slider Auto-Play, Indicator Logic, & PARALLAX SCROLL
+    // 5. Hero Slider Auto-Play & Indicator Logic
     const slideData = [
       {
         image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000&auto=format&fit=crop',
@@ -1476,22 +1456,17 @@
     const bttBtn = document.getElementById('backToTopBtn');
     const scrollProgressBar = document.getElementById('scrollProgress');
 
-    // Scroll Effects (Dynamic Island, Back to Top, Progress Bar, and Parallax)
+    // Nav Scroll Effect (Dynamic Island, Back to Top, and Scroll Progress)
     window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       
-      // A. Scroll Progress Bar
+      // Scroll Progress Bar Logic
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
       scrollProgressBar.style.width = scrolled + '%';
 
-      // B. Hero Parallax Effect
-      if (winScroll < window.innerHeight) {
-        sliderContainer.style.transform = `translateY(${winScroll * 0.35}px)`;
-      }
-
-      // C. Dynamic Island Logic
-      if (winScroll > 50) {
+      // Dynamic Island Logic
+      if (window.scrollY > 50) {
         navbar.classList.remove('top-0', 'w-full', 'bg-transparent', 'border-transparent', 'border-b');
         navbar.classList.add('top-4', 'md:top-6', 'w-[95%]', 'max-w-4xl', 'bg-obsidian/90', 'backdrop-blur-xl', 'border', 'border-white/10', 'rounded-full', 'shadow-2xl', 'shadow-black/50');
         navInner.classList.remove('h-20', 'md:h-24');
@@ -1503,8 +1478,8 @@
         navInner.classList.remove('h-16', 'md:h-20');
       }
 
-      // D. Back to Top Logic
-      if (winScroll > 600) {
+      // Back to Top Logic
+      if (window.scrollY > 600) {
         bttBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
         bttBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
       } else {
@@ -1531,21 +1506,12 @@
     function switchSlide(index) {
       titleEl.style.opacity = '0';
       descEl.style.opacity = '0';
-      titleEl.classList.remove('translate-y-0');
-      descEl.classList.remove('translate-y-0');
-      titleEl.classList.add('translate-y-4');
-      descEl.classList.add('translate-y-4');
       
       setTimeout(() => {
         titleEl.textContent = slideData[index].title;
         descEl.textContent = slideData[index].desc;
-        
         titleEl.style.opacity = '1';
         descEl.style.opacity = '1';
-        titleEl.classList.remove('translate-y-4');
-        descEl.classList.remove('translate-y-4');
-        titleEl.classList.add('translate-y-0');
-        descEl.classList.add('translate-y-0');
       }, 400);
 
       slideData.forEach((_, idx) => {
@@ -1652,11 +1618,30 @@
     updateMortgage();
 
     // 7. Custom Global Toast System
-    function showGlobalToast(message) {
+    function showGlobalToast(message, isNotice = false) {
       const toast = document.getElementById('globalToast');
       const toastMsg = document.getElementById('globalToastMessage');
+      const toastIcon = document.getElementById('toastIcon');
       
       toastMsg.textContent = message;
+      
+      // Update styling based on whether it's a "Success" or a "Notice"
+      if (isNotice) {
+        toastIcon.setAttribute('data-lucide', 'info');
+        toastIcon.classList.remove('text-emerald-400');
+        toastIcon.classList.add('text-gold');
+        toast.classList.remove('border-emerald-500/50');
+        toast.classList.add('border-gold/30');
+      } else {
+        toastIcon.setAttribute('data-lucide', 'check-circle');
+        toastIcon.classList.remove('text-gold');
+        toastIcon.classList.add('text-emerald-400');
+        toast.classList.remove('border-gold/30');
+        toast.classList.add('border-emerald-500/50');
+      }
+      
+      lucide.createIcons(); // re-render icon
+      
       toast.classList.remove('hidden');
       
       // Delay opacity transition so display block renders first
@@ -1673,11 +1658,11 @@
       }, 3500);
     }
 
-    // Advanced Search Form Handling
+    // Advanced Search Form Handling (Now triggers Demo Notice)
     const advancedSearchForm = document.getElementById('advancedSearchForm');
     advancedSearchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      showGlobalToast('Searching MLS database for matching properties...');
+      showGlobalToast('Demo Notice: Search routing is outside the scope of this homepage assessment.', true);
     });
 
     // 8. Property Modal View (Cinematic Apple Entrance)
@@ -1736,6 +1721,7 @@
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      // This uses the regular "Success" styling (isNotice = false default)
       showGlobalToast('Message Transmitted Successfully! Marci Metzger will reach out promptly.');
       contactForm.reset();
     });
